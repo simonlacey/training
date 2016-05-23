@@ -14,7 +14,26 @@
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
         <div class="off-canvas position-left" id="mainMenu" data-off-canvas>
 
-            <h2>My Canvas</h2>
+            <h3 class="text-center">Navigation</h3>
+
+            <ul class="vertical menu" data-drilldown>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li>
+                    <a href="#">Rooms</a>
+                    <ul class="vertical menu">
+                        <li><a href="#">Room 01</a></li>
+                        <li><a href="#">Room 02</a></li>
+                        <li><a href="#">Room 03</a></li>
+                        <li><a href="#">Room 04</a></li>
+                        <li><a href="#">Room 05</a></li>
+                        <li><a href="#">Room 06</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+
         </div> <!-- off canvas -->
 
         <div class="off-canvas-content" data-offcanvas-content>
@@ -58,8 +77,10 @@
                         </div>
                     </div><!-- room image-->
                     <div class="room-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu, convallis
-                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros nisi
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex
+                            eu, convallis
+                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                            vehicula eros nisi
                             quis mauris.</p>
                     </div>
                 </div><!-- close medium-4 -->
@@ -72,8 +93,10 @@
                         </div>
                     </div><!-- room image-->
                     <div class="room-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu, convallis
-                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros nisi
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex
+                            eu, convallis
+                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                            vehicula eros nisi
                             quis mauris.</p>
                     </div>
                 </div><!-- close medium-4 -->
@@ -86,8 +109,10 @@
                         </div>
                     </div><!-- room image-->
                     <div class="room-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu, convallis
-                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros nisi
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex
+                            eu, convallis
+                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                            vehicula eros nisi
                             quis mauris.</p>
                     </div>
                 </div><!-- close medium-4 -->
@@ -110,37 +135,65 @@
                     <div class="row">
                         <div class="medium-6 columns">
                             <h2>About Us</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu,
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus
+                                ex eu,
                                 convallis
-                                eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros
+                                eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                                vehicula eros
                                 nisi
                                 quis mauris.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu,
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus
+                                ex eu,
                                 convallis
-                                eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros
+                                eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                                vehicula eros
                                 nisi
                                 quis mauris.</p>
                         </div>
-                        <div class="medium-6 columns bluebg">
+
+                        <!-- Modals -->
+
+                            <div class="reveal" id="galleryModal" data-close-on-click="true" data-reveal data-animation-in="scale-in-up" data-animation-out="scale-out-down">
+                                <img src="" id="imageContainer">
+                                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                        <!-- End Modals-->
+
+                        <div id="gallery" class="medium-6 columns bluebg">
                             <h2 class="white">Gallery</h2>
                             <div class="row small-up-3 medium-up-3 large-up-3">
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image01.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image01.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image02.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image02.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image03.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image03.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image04.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image04.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image05.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image05.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div class="column">
-                                    <img class="thumbnail" src="assets/images/gallery/thumbnail/image06.jpg" alt="">
+                                    <a data-open="galleryModal">
+                                        <img class="thumbnail" src="assets/images/gallery/thumbnail/image06.jpg" alt="">
+                                    </a>
                                 </div>
                             </div>
 
@@ -156,12 +209,70 @@
             <section class="booking row">
                 <div class="large-8 large-centered columns text-center">
                     <h2>Book Now</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu, convallis
-                        eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros nisi
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu,
+                        convallis
+                        eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula
+                        eros nisi
                         quis mauris.</p>
-                    <a href="" class="button">Book Now</a>
+                    <a data-open="modalBook" class="button">Book Now</a>
                 </div>
             </section>
+
+            <!-- Modal - Book Now -->
+
+                <div class="reveal" id="modalBook" data-reveal data-animation-in="scale-in-up" data-animation-out="scale-out-down">
+                    <h2 class="text-center">Booking Form</h2>
+
+                    <form data-abide novalidate>
+
+                        <!-- form error message -->
+                        <div class="alert callout" style="display:none;" data-abide-error>
+                            <p><i class="fi-alert"></i> There are some problems in your form.</p>
+                        </div>
+
+                        <div class="row columns">
+                            <label>Name:
+                                <input type="text" placeholder="Your Name" required>
+                                <span class="form-error">
+                                    <i class="fi-alert"></i> The name field is mandatory
+                                </span>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Email:
+                                <input type="text" placeholder="Your Email" required pattern="email">
+                                <span class="form-error">
+                                    <i class="fi-alert"></i> The email field is mandatory
+                                </span>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Phone Number:
+                                <input type="text" placeholder="Your Phone Number" required pattern="number">
+                                <span class="form-error">
+                                    <i class="fi-alert"></i> The phone field is mandatory
+                                </span>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <label>Message:
+                                <textarea placeholder="Enter Your Message"></textarea>
+                            </label>
+                        </div>
+                        <div class="row columns">
+                            <input type="submit" class="button" value="Submit">
+                            <button class="button success" type="reset" value="Reset">Reset</button>
+                        </div>
+
+                        <button class="close-button" data-close aria-label="Close reveal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            <!-- Close Modal Book Now-->
 
             <!-- Footer Section -->
             <footer>
@@ -188,8 +299,10 @@
                     <div class="about-us large-4 columns">
 
                         <h4>About Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex eu, convallis
-                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae vehicula eros nisi
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at massa egestas, cursus ex
+                            eu, convallis
+                            eros. Duis ultrices, quam sed fringilla fermentum, leo lacus facilisis libero, vitae
+                            vehicula eros nisi
                             quis mauris.</p>
                         <ul class="menu social align-right">
                             <li><a href="http://www.facebook.com"><i class="fi-social-facebook"></i></a></li>
@@ -201,9 +314,9 @@
                 <p class="text-center copyright">All Rights Reserved Hotel & Spa 2015.</p>
             </footer>
 
-            </div><!-- off canvas content -->
-        </div><!-- off canvas inner -->
-    </div><!-- off canvas wrapper -->
+        </div><!-- off canvas content -->
+    </div><!-- off canvas inner -->
+</div><!-- off canvas wrapper -->
 
 
 <script src="bower_components/jquery/dist/jquery.js"></script>

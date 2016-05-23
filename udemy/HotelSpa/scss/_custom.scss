@@ -1,7 +1,23 @@
+.is-reveal-open .off-canvas-wrapper {
+    overflow-x: visible;
+}
+
 h2 {
     color: $primary-color;
     font-size: rem-calc(42);
     margin: rem-calc(20 0);
+}
+
+/* Off Canvas */
+div.off-canvas {
+    height: 100%;
+
+    a, h3 {
+        color: $white;
+    }
+    .is-drilldown-submenu {
+        background-color: darken($primary-color,15);
+    }
 }
 
 /* ---------------
