@@ -1,0 +1,60 @@
+body {
+  background: rgb(187,108,209); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(187,108,209,1) 0%, rgba(65,114,183,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(187,108,209,1) 0%,rgba(65,114,183,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(187,108,209,1) 0%,rgba(65,114,183,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bb6cd1', endColorstr='#4172b7',GradientType=0 ); /* IE6-9 */
+}
+
+header {
+  padding: rem-calc(50 0);
+}
+
+.main-navigation {
+  background-color: $primary-color;
+  margin-bottom: rem_calc(20);
+}
+
+.menu {
+  > li {
+    &.active,
+    &:hover {
+      background-color: $secondary-color;
+
+      a {
+        color: $primary-color;
+      }
+    }
+
+    > a {
+      color: $white;
+      font-weight: bold;
+      text-transform: uppercase;
+      justify-content: space-around !important;
+    }
+  }
+}
+
+div.responsive-menu {
+  padding: rem-calc(10);
+  .menu-icon {
+    @include hamburger($white, $white, 24px, 20px, 3px, 3);
+  }
+  .title-bar-title {
+    color: $white;
+    margin-left: rem-calc(12);
+  }
+}
+
+div.orbit {
+  background-color: $primary-color;
+  padding: rem-calc(20);
+}
+
+
+
+
+
+
+
+
