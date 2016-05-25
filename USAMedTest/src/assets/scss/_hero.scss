@@ -1,0 +1,37 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  background: url('/assets/img/hero.jpg') no-repeat center center;
+  background-size: cover;
+  height: 600px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 9999;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  /*left: 30px;*/
+}
+
+.hero-callout,
+.hero-list,
+.hero-short-form {
+  margin-top: 30px;
+}
+
+.hero h2 {
+  font-size: 3.8em;
+  line-height: 1em;
+}
+
+.hero p {
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.hero-list li {
+  font-size: 1.5em;
+  list-style: none;
+}

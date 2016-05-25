@@ -1,0 +1,54 @@
+/*--------- header ---------*/
+
+.header {
+  position: relative;
+  z-index: 99999;
+  padding: 10px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.logo-wrapper {
+  width: 110px;
+  height: auto;
+}
+
+.logo {
+  vertical-align: middle;
+  padding-top: 10px;
+}
+
+.contact-number-wrapper {
+  padding-top: 5px;
+}
+
+.call-toll-free {
+  position: relative;
+  text-align: right;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  display: block;
+}
+
+.toll-free-number {
+  position: relative;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 14px;
+  color: $primary-color;
+  text-align: right;
+  float: right;
+}
+
+.icon-mobile-phone {
+  position: relative;
+  float: right;
+  width: auto;
+  height: 42px;
+  margin-top: -5px;
+  padding: 0;
+}
