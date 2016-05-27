@@ -1,7 +1,13 @@
 .footer {
-  background-color: dodgerblue;
-  font-size: .9rem;
-  padding: 1rem;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#215793+0,1e436c+100 */
+  background: rgb(33,87,147); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(33,87,147,1) 0%, rgba(30,67,108,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(33,87,147,1) 0%,rgba(30,67,108,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(33,87,147,1) 0%,rgba(30,67,108,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#215793', endColorstr='#1e436c',GradientType=0 ); /* IE6-9 */
+
+  font-size:.75rem;
+  padding: rem-calc(30 0);
   color: #fff;
 }
 

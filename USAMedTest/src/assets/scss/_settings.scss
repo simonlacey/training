@@ -49,19 +49,20 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #2199e8,
-  secondary: #777,
+  primary: #0064c3,
+  secondary: #ff6642,
   success: #3adb76,
   warning: #ffae00,
   alert: #ec5840,
 );
 $light-gray: #e6e6e6;
-$medium-gray: #cacaca;
+/*$medium-gray: #E0E6EC;*/
+$medium-gray: #dbe1ec;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
-$body-font-color: $black;
+$body-font-color: #535353;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -85,7 +86,7 @@ $breakpoints: (
   xlarge: 1200px,
   xxlarge: 1440px,
 );
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (small medium large xlarge);
 
 // 3. The Grid
 // -----------
@@ -102,8 +103,10 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+// $header-font-family: $body-font-family;
+$header-font-family: "Acumin Pro", Helvetica, Arial, sans-serif;
+$body-font-family: 'Roboto', Helvetica, Arial, sans-serif;
+$header-font-weight: 400;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
@@ -118,13 +121,13 @@ $header-sizes: (
   medium: (
     'h1': 48,
     'h2': 40,
-    'h3': 31,
-    'h4': 25,
+    'h3': 30,
+    'h4': 20,
     'h5': 20,
     'h6': 16,
   ),
 );
-$header-color: inherit;
+$header-color: darken($primary-color, 10);
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
@@ -144,7 +147,7 @@ $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
-$hr-border: 1px solid $medium-gray;
+$hr-border: 1px solid $light-gray;
 $hr-margin: rem-calc(20) auto;
 $list-lineheight: $paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
@@ -334,10 +337,10 @@ $input-prefix-color: $black;
 $input-prefix-background: $light-gray;
 $input-prefix-border: 1px solid $medium-gray;
 $input-prefix-padding: 1rem;
-$form-label-color: $black;
+$form-label-color: #3a3c49;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
-$form-label-line-height: 1.8;
+$form-label-line-height: 2.8;
 $select-background: $white;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;

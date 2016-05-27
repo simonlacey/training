@@ -3,52 +3,58 @@
 .header {
   position: relative;
   z-index: 99999;
-  padding: 10px 0;
+  padding: rem-calc(10 0);
   background-color: #fff;
   border-bottom: 1px solid #f7f7f7;
+  box-shadow: 2px 2px 10px $light-gray;
+
+  .logo-wrapper {
+    width: 110px;
+    height: auto;
+  }
+
+  .logo {
+    vertical-align: middle;
+    padding: rem-calc(5 0);
+  }
+
+  .icon-mobile-phone {
+    position: relative;
+    display: inline;
+    width: 30px;
+    height: 30px;
+    margin-top: rem-calc(2);
+    margin-left: rem-calc(5);
+  }
+
+  .contact-number-wrapper {
+    padding: rem-calc(4 0);
+  }
+
+  .header-toll-free-number {
+    position: relative;
+    display: inline;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px;
+    color: $primary-color;
+  }
+
 }
 
-.logo-wrapper {
-  width: 110px;
-  height: auto;
-}
 
-.logo {
-  vertical-align: middle;
-  padding-top: 10px;
-}
 
-.contact-number-wrapper {
-  padding-top: 5px;
-}
 
-.call-toll-free {
+
+/*.call-toll-free {
   position: relative;
-  text-align: right;
+  display: inline-block;
   font-size: 11px;
-  line-height: 14px;
-  font-weight: 600;
+  font-weight: 400;
   color: #666;
-  text-transform: uppercase;
-  display: block;
-}
-
-.toll-free-number {
-  position: relative;
-  display: block;
-  font-size: 18px;
-  font-weight: bold;
   line-height: 14px;
-  color: $primary-color;
   text-align: right;
+  margin-bottom: 6px;
+  text-transform: uppercase;
   float: right;
-}
-
-.icon-mobile-phone {
-  position: relative;
-  float: right;
-  width: auto;
-  height: 42px;
-  margin-top: -5px;
-  padding: 0;
-}
+}*/

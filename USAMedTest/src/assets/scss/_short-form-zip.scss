@@ -1,19 +1,16 @@
 #short-form-enter-zip {
-  background: url('/assets/img/short-form-bkgd.jpg') no-repeat center center;
-  height: 250px;
-  padding: 30px;
+  background: url('../img/short-form-bkgd.jpg') no-repeat center center;
+  padding: rem-calc(30 0);
+
 }
 
-#short-form-title {
-  font-size: 42px;
+h2#short-form-title {
+  font-size: 36px;
   font-weight: 700;
   text-align: center;
-  color: #fff;
-  margin-bottom: 15px;
+  color: $white;
 }
 
-// figure this out - can't use global
-/*
-input {
-  border-radius: 20px;
-}*/
+.find-plans {
+  background-color: $secondary-color;
+}
