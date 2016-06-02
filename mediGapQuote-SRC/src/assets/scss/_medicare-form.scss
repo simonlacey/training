@@ -1,0 +1,63 @@
+.medicare-form {
+
+  background-color: #f6f8fd;
+  @include breakpoint(small) {
+    padding: rem-calc(5);
+  }
+  @include breakpoint(medium) {
+    padding: rem-calc(45);
+  }
+
+  .form-container {
+    padding: rem-calc(20);
+    border-radius: 8px;
+    border: 2px solid #d8e0e9;
+    @include breakpoint(small) {
+      background-color: $white;
+    }
+    @include breakpoint(medium) {
+      background-color: $white;
+    }
+  }
+
+  h3.form-header {
+    font-size: 24px;
+    text-align: center;
+    padding-top: rem-calc(15);
+    line-height: 20px;
+  }
+
+  p.form-info {
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: rem-calc(30);
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  hr {
+    width: 96%;
+    padding: rem-calc(10 0);
+  }
+
+  .button-submit-form {
+    background-color: $secondary-color;
+    width: 80%;
+    font-size: 22px;
+    margin-top: rem-calc(15);
+    border-radius: 30px;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 3px 10px rgba(255,102,66,0.2);
+    &:hover {
+      background-color: $primary-color;
+      box-shadow: 0 6px 18px rgba(0,100,95,0.6);
+    }
+    .fi-play {
+      font-size: 22px;
+      padding-left: 5px;
+    }
+
+  }
+}
