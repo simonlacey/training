@@ -1,3 +1,7 @@
+/* --------------------------
+medicare form
+-------------------------- */
+
 .medicare-form {
 
   background-color: #f6f8fd;
@@ -9,28 +13,35 @@
   }
 
   .form-container {
-    padding: rem-calc(20);
     border-radius: 8px;
     border: 2px solid #d8e0e9;
     @include breakpoint(small) {
       background-color: $white;
+      padding: rem-calc(20);
     }
     @include breakpoint(medium) {
       background-color: $white;
+      padding: rem-calc(20 60);
     }
   }
 
   h3.form-header {
-    font-size: 24px;
+    font-size: 1.5em;
+    font-weight: 300;
     text-align: center;
     padding-top: rem-calc(15);
-    line-height: 20px;
+    line-height: 1.3em;
   }
 
   p.form-info {
     font-size: 14px;
     text-align: center;
-    padding-bottom: rem-calc(30);
+    @include breakpoint(small) {
+      padding-bottom: rem-calc(10);
+    }
+    @include breakpoint(medium) {
+      padding-bottom: rem-calc(10);
+    }
   }
 
   label {
@@ -38,18 +49,26 @@
   }
 
   hr {
-    width: 96%;
+    width: 92%;
     padding: rem-calc(10 0);
   }
 
   .button-submit-form {
     background-color: $secondary-color;
-    width: 80%;
-    font-size: 22px;
-    margin-top: rem-calc(15);
+    margin-top: rem-calc(10);
     border-radius: 30px;
     transition: all .2s ease-in-out;
     box-shadow: 0 3px 10px rgba(255,102,66,0.2);
+
+    @include breakpoint(small) {
+      width: 100%;
+      font-size: 1em;
+    }
+    @include breakpoint(medium) {
+      width: 100%;
+      font-size: 1.1em;
+    }
+
     &:hover {
       background-color: $primary-color;
       box-shadow: 0 6px 18px rgba(0,100,95,0.6);

@@ -1,69 +1,83 @@
-<form class="medicare">
-    <h3 class="form-header">Tell Us About Yourself</h3>
-    <p class="form-info">Fill out this short form and you will be contacted by a licensed medicare agent.</p>
-    <div class="row">
+<!-- start medicare form container -->
+<div class="medicare-form">
+    <div class="column row">
+        <div class="small-12 medium-12 large-8 large-offset-2 columns form-container">
 
-        <div class="medium-6 small-12 columns">
-            <label>Gender:</label>
-            <input type="radio" name="gender" value="male" id="gender" required><label for="gender">Male</label>
-            <input type="radio" name="gender" value="female" id="gender"><label for="gender">Female</label>
-        </div>
+            <form id="medicare">
+                <h3 class="form-header">Fill in this short medicare form and click submit.</h3>
+                <p class="form-info">After you submit your information to us one of our licensed agents will review your information and call you with a free medicare quote.</p>
+                <div class="row">
 
-        <div class="medium-6 small-12 columns">
-            <label for="age">Age</label>
-            <input type="text" class="span2" value="02-12-1989" id="age" name="age">
-        </div>
+                    <div class="small-6 medium-3 columns">
+                        <input type="radio" name="radio" id="gender" class="radio" required checked/>
+                        <label for="gender" class="custom-label">Male</label>
+                    </div>
+                    <div class="small-6 medium-3 columns">
+                        <input type="radio" name="radio" id="radio2" required class="radio"/>
+                        <label for="radio2" class="custom-label">Female</label>
+                    </div>
 
-        <hr>
+                    <div class="small-12 medium-4 columns">
+                        <label for="date">Age</label>
+                        <input type="text" class="required" value="" required placeholder="mm/dd/year" id="date" name="age">
+                    </div>
 
-        <div class="medium-6 small-12 columns">
-            <label>First Name
-                <input type="text" placeholder="Enter Your First Name">
-            </label>
-        </div>
-        <div class="medium-6 small-12 columns">
-            <label>Last Name
-                <input type="text" placeholder="Enter Your Last Name">
-            </label>
-        </div>
+                    <hr>
 
-        <div class="medium-6 small-12 columns">
-            <label>Street Address
-                <input type="text" placeholder="Enter Your Street Address">
-            </label>
-        </div>
-        <div class="medium-6 small-12 columns">
-            <label>City
-                <input type="text" placeholder="Enter Your City">
-            </label>
-        </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="firstname">First Name
+                            <input type="text" class="required" name="first_name" id="firstname" required placeholder="Enter Your First Name">
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="lastname">Last Name
+                            <input type="text" class="required" name="last_name" id="lastname" required placeholder="Enter Your Last Name">
+                        </label>
+                    </div>
 
-        <div class="medium-6 small-12 columns">
-            <label>State
-                <input type="text" placeholder="State">
-            </label>
-        </div>
-        <div class="medium-6 small-12 columns">
-            <label>Zip
-                <input type="text" placeholder="Enter Your Zip Code">
-            </label>
-        </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="address">Street Address
+                            <input type="text" name="street1" id="address" required placeholder="Enter Your Street Address">
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="city">City
+                            <input type="text" name="city" id="city" required placeholder="Enter Your City">
+                        </label>
+                    </div>
 
-        <div class="medium-6 small-12 columns">
-            <label>Primary Phone Number
-                <input type="text" placeholder="What is your phone number">
-            </label>
-        </div>
-        <div class="medium-6 small-12 columns">
-            <label>Email Address
-                <input type="text" placeholder="Enter Your Email Address">
-            </label>
-        </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="state">State
+                            <input type="text" id="state" placeholder="Enter the state your live in">
+                        </label>
+                    </div>
 
-        <div class="medium-6 small-6 columns">
-            <button class="button large button-submit-form" href="#">Submit <i class="fi-play"></i></button>
-        </div>
+                    <div class="small-12 medium-6 columns">
+                        <label>Zip
+                            <input type="number" placeholder="Enter Your Zip Code">
+                        </label>
+                    </div>
 
+                    <div class="small-12 medium-6 columns">
+                        <label>Primary Phone Number
+                            <input type="tel" id="phone" placeholder="(___) ___-____">
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <label>Email Address
+                            <input type="email" placeholder="Enter Your Email Address">
+                        </label>
+                    </div>
+
+                    <div class="small-12 medium-6 columns">
+                        <button class="button button-submit-form" type="submit">Submit Form <i class="fi-play"></i></button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
     </div>
-
-</form>
+</div>
+<!-- end medicare form container -->

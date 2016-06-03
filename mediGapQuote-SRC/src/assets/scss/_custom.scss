@@ -1,4 +1,6 @@
-/* typography updates */
+/* --------------------------
+typography
+-------------------------- */
 
 h1, h2, h3, h4,h5,h6 {
   padding-bottom: rem-calc(5);
@@ -42,7 +44,9 @@ p {
   line-height: 1.8em;
 }
 
-/* reveal modal updates */
+/* --------------------------
+reveal
+-------------------------- */
 
 .reveal {
   @include breakpoint(small) {
@@ -54,7 +58,7 @@ p {
 }
 
 .modal-header {
-  font-size: 32px;
+  font-size: 2em;
   color: darken($primary-color, 10);
   margin-bottom: rem-calc(30);
 }
@@ -64,3 +68,7 @@ p {
   font-weight: 400;
   margin-bottom: rem-calc(5);
 }
+
+
+
+

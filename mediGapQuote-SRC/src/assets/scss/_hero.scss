@@ -1,6 +1,6 @@
-/* -------------------
-hero layout
-------------------- */
+/* --------------------------
+hero
+-------------------------- */
 
 .overlay {
   @include breakpoint(small) {
@@ -53,7 +53,7 @@ div.hero {
       top: rem-calc(80);
     }
 
-    .hero-header-main {
+    .hero-header-callout {
       @include breakpoint(small) {
         font-size: 1.5em;
         display: block;
@@ -136,9 +136,9 @@ div.hero {
 }
 
 
-/* -------------------
-hero form
-------------------- */
+/* --------------------------
+hero form zip submit
+-------------------------- */
 
 input [type='text'] {
   color: #666 !important;
