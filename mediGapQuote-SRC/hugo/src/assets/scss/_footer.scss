@@ -1,0 +1,44 @@
+.footer {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,0f3663+100 */
+  background: rgb(30,87,153); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(30,87,153,1) 0%, rgba(15,54,99,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(15,54,99,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(30,87,153,1) 0%,rgba(15,54,99,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#0f3663',GradientType=0 ); /* IE6-9 */
+
+  font-size:.85rem;
+  font-weight: 300;
+  color: #fff;
+
+  @include breakpoint(small) {
+    padding: rem-calc(15 0);
+  }
+  @include breakpoint(medium) {
+    padding: rem-calc(30 0);
+  }
+
+  a {
+    color: #fff;
+  }
+
+}
+
+.footer-copyright {
+  @include breakpoint(small) {
+    text-align: center;
+    line-height: rem-calc(20);
+  }
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+}
+
+.footer-privacy {
+  @include breakpoint(small) {
+    text-align: center;
+    line-height: rem-calc(20);
+  }
+  @include breakpoint(medium) {
+    text-align: right;
+  }
+}

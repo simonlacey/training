@@ -1,0 +1,51 @@
+
+<!-- =========================
+ SCRIPTS
+============================== -->
+
+<!-- JQuery  -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+
+<script src="assets/js/jquery1.11.2.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="assets/js/encode.js"></script>
+<script type="text/javascript" src="assets/js/main-long.js"></script>
+
+<!-- Library for inputmask in phone number input -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
+<script src="assets/js/jquery.inputmask.bundle.js"></script>
+
+
+<!-- InputMask for phone number input field -->
+<script>
+    $(window).load(function () {
+        var zips = [{"mask": "#####"}];
+        $('#hero-zip-submit-input').inputmask({
+            mask: zips,
+            greedy: false,
+            definitions: {'#': {validator: "[0-9]", cardinality: 1}}
+        });
+    });
+</script>
+
+
+
+<!--  UNIVERSAL LEAD ID   -->
+<script id="LeadiDscript" type="text/javascript">
+    // <!--
+    (function () {
+        var s = document.createElement('script');
+        s.id = 'LeadiDscript_campaign';
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//create.lidstatic.com/campaign/3c5ff132-c09f-1ab0-4475-08e1bb1e727a.js?snippet_version=2';
+        var LeadiDscript = document.getElementById('LeadiDscript');
+        LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    })();
+    // -->
+</script>
+<noscript>
+    <img
+            src='//create.leadid.com/noscript.gif?lac=33a0d976-59b0-cc2f-6160-c04c4b7dca3f&lck=3c5ff132-c09f-1ab0-4475-08e1bb1e727a&snippet_version=2'/>
+</noscript>

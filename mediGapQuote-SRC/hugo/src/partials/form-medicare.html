@@ -1,0 +1,71 @@
+<form class="medicare">
+    <h3 class="form-header">Tell Us About Yourself</h3>
+    <p class="form-info">Fill out this short form and you will be contacted by a licensed medicare agent.</p>
+    <div class="row">
+
+        {{> hidden-fields}}
+
+        <div class="medium-6 small-12 columns">
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="male" id="gender" required><label for="gender">Male</label>
+            <input type="radio" name="gender" value="female" id="gender"><label for="gender">Female</label>
+        </div>
+
+        <div class="medium-6 small-12 columns">
+            <label for="age">Age</label>
+            <input type="text" class="span2" value="02-12-1989" id="age" name="age">
+        </div>
+
+        <hr>
+
+        <div class="medium-6 small-12 columns">
+            <label>First Name
+                <input type="text" placeholder="Enter Your First Name">
+            </label>
+        </div>
+        <div class="medium-6 small-12 columns">
+            <label>Last Name
+                <input type="text" placeholder="Enter Your Last Name">
+            </label>
+        </div>
+
+        <div class="medium-6 small-12 columns">
+            <label>Street Address
+                <input type="text" placeholder="Enter Your Street Address">
+            </label>
+        </div>
+        <div class="medium-6 small-12 columns">
+            <label>City
+                <input type="text" placeholder="Enter Your City">
+            </label>
+        </div>
+
+        <div class="medium-6 small-12 columns">
+            <label>State
+                <input type="text" placeholder="State">
+            </label>
+        </div>
+        <div class="medium-6 small-12 columns">
+            <label>Zip
+                <input type="text" placeholder="Enter Your Zip Code">
+            </label>
+        </div>
+
+        <div class="medium-6 small-12 columns">
+            <label>Primary Phone Number
+                <input type="text" placeholder="What is your phone number">
+            </label>
+        </div>
+        <div class="medium-6 small-12 columns">
+            <label>Email Address
+                <input type="text" placeholder="Enter Your Email Address">
+            </label>
+        </div>
+
+        <div class="medium-6 small-6 columns">
+            <button class="button large button-submit-form" href="#">Submit <i class="fi-play"></i></button>
+        </div>
+
+    </div>
+
+</form>
