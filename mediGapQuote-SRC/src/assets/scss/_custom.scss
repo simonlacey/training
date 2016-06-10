@@ -45,6 +45,22 @@ p {
 }
 
 /* --------------------------
+padding
+-------------------------- */
+
+.sm-padding {
+  padding: rem-calc(30 0);
+}
+
+.md-padding {
+  padding: rem-calc(30 0);
+}
+
+.lg-padding {
+  padding: rem-calc(60 0);
+}
+
+/* --------------------------
 reveal
 -------------------------- */
 
@@ -68,6 +84,7 @@ reveal
   font-weight: 400;
   margin-bottom: rem-calc(5);
 }
+
 
 
 

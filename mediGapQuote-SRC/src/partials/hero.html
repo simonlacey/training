@@ -16,13 +16,16 @@
             </ul><!-- end hero content -->
 
             <!-- start hero form-->
-            <form class="hero-zip-submit">
+            <form action="form.php" method="post" class="hero-zip-submit">
                 <div class="row">
-                    <div class="small-10 medium-6 large-5 columns">
+                    <div class="small-10 medium-4 columns">
                         <label>
-                            <input type="text" id="hero-zip-submit-input" placeholder="Enter your zip code...">
+
+                            {{> hidden-fields-lp}}
+
+                            <input type="tel" id="hero-zip-submit-input" name="zip" value="<?php echo $zip; ?>" placeholder="Enter your zip code...">
                         </label>
-                            <button id="hero-zip-submit-button" type="submit" class="button"><i class="fi-play"></i></button>
+                            <button id="hero-zip-submit-button" type="submit" class="button">Start Quote <i class="fi-play"></i></button>
                     </div>
                 </div>
             </form><!-- end hero form -->

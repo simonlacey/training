@@ -13,7 +13,7 @@ header
     box-shadow: none;
   }
   @include breakpoint(medium) {
-    box-shadow: 2px 2px 10px $light-gray;
+    box-shadow: 1px 1px 6px $light-gray;
   }
 
   .logo-wrapper {
@@ -34,8 +34,7 @@ header
   .icon-mobile-phone {
     position: relative;
     display: inline-block;
-    width: 36px;
-    height: 36px;
+    line-height: 14px;
 
     @include breakpoint(small) {
       margin-left: rem-calc(0);
@@ -46,9 +45,26 @@ header
 
     @include breakpoint(medium) {
       margin-left: rem-calc(5);
-      margin-top: rem-calc(-10);
-      width: 36px;
-      height: 36px;
+      margin-top: rem-calc(-12);
+      width: 32px;
+      height: 32px;
+    }
+
+  }
+
+  .header-toll-free-cta {
+    position: relative;
+    font-size: .75em;
+    font-weight: 400;
+    line-height: 8px;
+    text-transform: uppercase;
+    letter-spacing: normal;
+
+    @include breakpoint (small) {
+      display: none;
+    }
+    @include breakpoint (medium) {
+      display: block;
     }
 
   }
@@ -56,10 +72,10 @@ header
   .header-toll-free-number {
     position: relative;
     display: inline-block;
-    font-size: 28px;
+    font-size: 1.8em;
     font-weight: 700;
     letter-spacing: -1px;
-    line-height: 36px;
+    line-height: 18px;
     color: $primary-color;
   }
 
