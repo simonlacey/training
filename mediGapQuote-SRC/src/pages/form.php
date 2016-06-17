@@ -1,9 +1,9 @@
 ---
 company: MediGapQuote
 web: www.mediagapquote.org
+domain: mediagapquote.org
 description: Affordable Medicare Insurance
 ---
-
-{{> getphone}}
+{{> preloader}}
 {{> form-medicare}}
 {{> hidden-frame}}

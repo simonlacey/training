@@ -1,36 +1,43 @@
 $(document).foundation();
 
-/* autocomplete - states for medicare form */
+/* show / hide medical conditions */
 
-/*$(function() {
-    var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-    ];
-    $( "#state" ).autocomplete({
-        source: availableTags
-    });
-});*/
+function h_conditions() {
+    document.getElementById('previous_conditons').style.display = "none";
+}
+
+function show() {
+    document.getElementById('previous_conditons').style.display = "block";
+}
+
+/* owl carousel custom js */
+
+$(document).ready(function(){
+    $(".owl-carousel").owlCarousel();
+});
+
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    nav:false,
+    autoplay:true,
+    autoplayTimeout:3500,
+    autoplayHoverPause:true,
+    responsiveClass:true,
+    responsive: {
+        0: {
+            items: 3,
+            margin:20,
+        },
+        600: {
+            items: 4,
+            margin:30,
+        },
+        1000: {
+            items: 7,
+            margin:40,
+        }
+    }
+});
 
 
 /*
@@ -44,24 +51,26 @@ $(document).foundation();
 
 
 /* input mask patterns */
-jQuery(function($){
-    $("#date").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
-    $("#phone").mask("(999) 999-9999" ,{placeholder:"(___)-___-____"});
+jQuery(function ($) {
+    $("#date").mask("99/99/9999", {autoclear: false});
+    $("#phone").mask("(999) 999-9999", {autoclear: false});
+//    $("#phone").mask("(999) 999-9999", {placeholder: "(___)-___-____"});
     $("#tin").mask("99-9999999");
     $("#ssn").mask("999-99-9999");
-    $("#hero-zip-submit-input").mask("99999", {placeholder:"_____"})
+    $("#hero-zip-submit-input").mask("99999", {autoclear: false}, {placeholder: "_____"})
+    $("#zip").mask("99999", {placeholder: "_____"})
 });
 
 /* clears form on focus and exit unless entire field is filled */
-jQuery(function() {
+jQuery(function () {
     var input = jQuery('#medicare input[type=text], #userForm textarea');
 
-    input.focus(function() {
+    input.focus(function () {
 
         jQuery(this).attr('data-default', jQuery(this).val());
         jQuery(this).val('');
 
-    }).blur(function() {
+    }).blur(function () {
         var el = jQuery(this);
 
         if (el.val() == '')
@@ -76,1153 +85,598 @@ $("[data-input-type=phone]", "body")
 
         var frm = $(this).parents("form");
         // if form has a validator
-        if ($.data( frm[0], 'validator' )) {
+        if ($.data(frm[0], 'validator')) {
             var validator = $(this).parents("form").validate();
             validator.settings.onfocusout.apply(validator, [this]);
         }
     });
 
+$(document).ready(function()
+{
 
-/* lightslider plugin */
+    function autoComplete(e){
+        var eventKeyCode = e.which;
+    }
 
-(function ($, undefined) {
-    'use strict';
-    var defaults = {
-        item: 3,
-        autoWidth: false,
-        slideMove: 1,
-        slideMargin: 10,
-        addClass: '',
-        mode: 'slide',
-        useCSS: true,
-        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',
-        easing: 'linear', //'for jquery animation',//
-        speed: 400, //ms'
-        auto: false,
-        pauseOnHover: false,
-        loop: false,
-        slideEndAnimation: true,
-        pause: 2000,
-        keyPress: false,
-        controls: true,
-        prevHtml: '',
-        nextHtml: '',
-        rtl: false,
-        adaptiveHeight: false,
-        vertical: false,
-        verticalHeight: 500,
-        vThumbWidth: 100,
-        thumbItem: 10,
-        pager: true,
-        gallery: false,
-        galleryMargin: 5,
-        thumbMargin: 5,
-        currentPagerPosition: 'middle',
-        enableTouch: true,
-        enableDrag: true,
-        freeMove: true,
-        swipeThreshold: 40,
-        responsive: [],
-        /* jshint ignore:start */
-        onBeforeStart: function ($el) {},
-        onSliderLoad: function ($el) {},
-        onBeforeSlide: function ($el, scene) {},
-        onAfterSlide: function ($el, scene) {},
-        onBeforeNextSlide: function ($el, scene) {},
-        onBeforePrevSlide: function ($el, scene) {}
-        /* jshint ignore:end */
+
+    function updateZip2()
+    {
+        var zip1 = $("#hero-zip-submit-input").val();
+        $("#zip").val(zip1);
+        $.debounce(200, autoComplete(e));
+    }
+
+
+    function updateZip1()
+    {
+        var zip2 = $("#zip").val();
+        $("#hero-zip-submit-input").val(zip2);
+    }
+
+    $(document).on("change, keyup", "#hero-zip-submit-input", updateZip2);
+
+    //$(document).on("change, keyup", "#zip", updateZip1);
+});
+
+
+
+
+/*
+
+ $.ajax({
+ url: 'http://api.apigurus.com/iplocation/v1.8/locateip',
+ type:'GET',
+ dataType: 'json',
+ data: { key: "ExampleKey123456789", ip : $('#ip_address').val()} ,
+
+
+ ?key=&ip=12.25.222.242&format=JSON
+
+
+ success: function (response) {
+ var city = response.city;
+ window.state = city[city.length - 2] + city[city.length - 1];
+ console.log(state);
+ }
+ });
+
+ */
+
+
+$(window).load(function () {
+
+
+    /*$('#carousel').flexslider({
+     animation: "slide",
+     controlNav: false,
+     animationLoop: true,
+     slideshow: false,
+     itemWidth: 210,
+     itemMargin: 0
+     });*/
+
+    $('input#state').val(window.state);
+
+    //$(".validate").validate();
+
+
+    /*
+     $('#submit').on('click', function (e) {
+     var passed = true,
+     errors = [],
+     errorCount = 0,
+     html = '',
+     errs;
+
+     /!*if(typeof(LincxSettings) != "undefined") {
+     LincxSettings.typvr120 = "off";
+     }
+     //e.preventDefault();
+     $('#error-list').remove();*!/
+     // check all the radio buttons
+
+     /!* if(self_emp) {
+     if ( ! $('input[name=self_emp]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Are You Self-Employed Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(insured) {
+     if ( ! $('input[name=insured]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Are You Currently Insured Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(Spouse) {
+     if ( ! $('input[name=Spouse]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Include Spouse Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(affordable) {
+     if ( ! $('input[name=affordable]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Is this something you would be able to afford Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(hospitalized) {
+     if ( ! $('input[name=hospitalized]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Anyone Hospitalized in Last 5 Years Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(physician) {
+     if ( ! $('input[name=physician]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Anyone Treated by Physician in Last 12 Months Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(prescription) {
+     if ( ! $('input[name=prescription]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Anyone Taking Prescription Medications Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(health) {
+     if ( ! $('input[name=health]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Any Major Health Conditions Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(previously_denied) {
+     if ( ! $('input[name=previously-denied]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Have You Ever Been Denied Health Insurance Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(ss_disabled) {
+     if ( ! $('input[name=ss-disabled]:checked').val() ) {
+     passed = false;
+     errors[errorCount] = 'Are You Currently on Social Security or Disability Must be Answered';
+     ++errorCount;
+     }
+     };
+
+     if(pregnant) {
+     if (!$('input[name=pregnant]:checked').val()) {
+     passed = false;
+     errors[errorCount] = 'Is There Anyone on the Policy Who is Pregnant Must be Answered';
+     ++errorCount;
+     }
+     };*!/
+
+
+     $('#h-conditions .checklist input').each(function (i, v) {
+     if (this.checked) {
+     $(this).val('Y');
+     } else {
+     $(this).val('N');
+     }
+     });
+
+     if ($('.validate').valid() && passed) {
+     return true;
+     } else {
+     if (!passed) {
+     errs = $('<div id="error-list" class="error"></div>');
+     html = '<ul class="error-list">';
+     for (i = 0; i < errorCount; ++i) {
+     html = html + '<li>' + errors[i] + '</li>';
+     }
+     html = html + '</ul>';
+     errs.html(html);
+     $('#submit').parent().before(errs[0]);
+     passed = true;
+     }
+     return false;
+     }
+
+     });
+     */
+
+
+    $('#birthday_selects select').change(function () {
+        $('#applicant_dob').val($('#DateOfBirth_Month option:selected').val() + ' ' + $('#DateOfBirth_Day option:selected').val() + ' ' + $('#DateOfBirth_Year option:selected').val());
+    });
+
+    $('#phone_container input').focusout(function () {
+        $('#main_phone').val('(' + $('#phone').val() + ')' + $('#phone2').val() + $('#phone3').val());
+    });
+
+    $('#fname').focus(function () {
+        if ($('#fname').val() == 'First Name') {
+            $('#fname').val("");
+        }
+    });
+
+    $('#fname').focusout(function () {
+        if ($('#fname').val() == '') {
+            $('#fname').val("First Name");
+        }
+    });
+
+    $('#lname').focus(function () {
+        if ($('#lname').val() == 'Last Name') {
+            $('#lname').val("");
+        }
+    });
+
+    $('#lname').focusout(function () {
+        if ($('#lname').val() == '') {
+            $('#lname').val("Last Name");
+        }
+    });
+
+    function afterHrs() {
+        var myOffset = new Date().getTimezoneOffset() / 60;
+        var myLocalHr = new Date().getHours();
+        var UTCHr = myLocalHr + myOffset;
+        var PacifHr = UTCHr - 7;
+        //Also we would like to have Agile in place for after-hours (8pm pacific to 6am pacific)
+        return (PacifHr >= 20 || PacifHr < 6);
     };
-    $.fn.lightSlider = function (options) {
-        if (this.length === 0) {
-            return this;
+
+
+
+    function get_dob_fastquote () {
+        if ($('#date').length){
+            var dob_fastquote = $('#date').val();
+            dob_fastquote = dob_fastquote.replace('/', '-');
+            dob_fastquote = dob_fastquote.replace('/', '-');
+            return dob_fastquote;
+
         }
 
-        if (this.length > 1) {
-            this.each(function () {
-                $(this).lightSlider(options);
+    }
+
+    $('#date').change(get_dob_fastquote());
+
+
+
+
+
+    var isAfterHrs = afterHrs();
+
+    $('#actionform').load(function () {
+        //data = Base64.encode($('#email').val());
+        var state = $('#state').val();
+        var agile_restricted_state = ["MA", "MD", "MI", "MN", "MT", "NJ", "NY", "RI", "VT"];
+
+        var thankyou_short = 'thank-you.php?form=short'
+            + '&zip=' + $('#zip').val() + '&offer_id=' + $('#offer_id').val()
+            + '&affiliate_id=' + $('#affiliate_id').val() + '&aff_sub=' + $('#aff_sub').val()
+            + '&inty=' + $('#insurance_type').val() + '&transaction_id=' + $('#transaction_id').val()
+            + '&aff_ref=' + $('#Affiliate_Ref').val();
+
+        var thankyou_long = 'thank-you.php?form=long'
+            + '&zip=' + $('#zip').val() + '&offer_id=' + $('#offer_id').val()
+            + '&affiliate_id=' + $('#affiliate_id').val() + '&aff_sub=' + $('#aff_sub').val()
+            + '&inty=' + $('#insurance_type').val() + '&transaction_id=' + $('#transaction_id').val()
+            + '&aff_ref=' + $('#Affiliate_Ref').val();
+
+        var agile_health = 'http://agilehealthinsurance.7eer.net/c/251325/284493/3530?'
+            + 'p.census[location][zip]=' + $('#zip').val() + '&p.census[member][0][dob]=' + get_dob_fastquote ()
+            + '&p.census[member][0][gender]=' + $('#gender').val() + '&p.census[member][0][role]=P';
+
+        var formid = 1;
+
+        if ($('#insurance_type').val() == 'health') {
+            if (($.inArray(state, agile_restricted_state) > -1)) {
+                if (formid == 1) {
+                    $(location).attr('href', thankyou_short);
+                } else {
+                    $(location).attr('href', thankyou_long);
+                }
+            } else if (isAfterHrs) {
+                $(location).attr('href', agile_health);
+            } else {
+                var a = Math.floor(10 * Math.random());
+                var isEven = function (number) {
+                    return (number % 2 == 0) ? true : false;
+                };
+                if (isEven(a)) {
+                    if (formid == 1) {
+                        $(location).attr('href', thankyou_short);
+                    } else {
+                        $(location).attr('href', thankyou_long);
+                    }
+                } else {
+                    $(location).attr('href', agile_health);
+                }
+            }
+        } else {
+            if (formid == 1) {
+                $(location).attr('href', thankyou_short);
+            } else {
+                $(location).attr('href', thankyou_long);
+            }
+        }
+    });
+
+    //$(".modal-inline").colorbox({inline:true, width:"60%",height:"70%"});
+
+    $('#lb_conditions').on('change', function () {
+        $('#previous_conditions').slideToggle(200);
+    });
+
+    $('#lb_conditions2').on('click', function () {
+        $('#previous_conditions').slideUp(200);
+    });
+
+    function getAge() {
+        //var birthDate = new Date($('#applicant_dob').val());
+        var birthDate = new Date($('#date').val());
+        var ageMs = Date.now() - birthDate.getTime();
+        var age = ageMs / 1000 / 60 / 60 / 24 / 365;
+        return age;
+    }
+
+    if ($('#form_title').text() == 'Fill in this short medicare form and click submit.') {
+        $('#health_only').hide();
+    }
+
+    //$('#DateOfBirth_Day,#DateOfBirth_Month,#DateOfBirth_Year').change(function () {
+    $('#date').change(function () {
+        //$('#applicant_dob').val($('#DateOfBirth_Month option:selected').val() + ' ' + $('#DateOfBirth_Day option:selected').val() + ' ' + $('#DateOfBirth_Year option:selected').val());
+
+        if (getAge() >= 64.5) {
+            $('#health_only').slideUp(300);
+            $('#insurance_type').val('medicare');
+            $('#form_title').text(function () {
+                return $(this).text().replace("health", "medicare");
             });
-            return this;
-        }
+            $('#form_info').text(function () {
+                return $(this).text().replace("health", "medicare");
+            });
+            $("#household-size").prop('required', false);
+            $("#income").prop('required', false);
 
-        var plugin = {},
-            settings = $.extend(true, {}, defaults, options),
-            settingsTemp = {},
-            $el = this;
-        plugin.$el = this;
+        } else {
 
-        if (settings.mode === 'fade') {
-            settings.vertical = false;
-        }
-        var $children = $el.children(),
-            windowW = $(window).width(),
-            breakpoint = null,
-            resposiveObj = null,
-            length = 0,
-            w = 0,
-            on = false,
-            elSize = 0,
-            $slide = '',
-            scene = 0,
-            property = (settings.vertical === true) ? 'height' : 'width',
-            gutter = (settings.vertical === true) ? 'margin-bottom' : 'margin-right',
-            slideValue = 0,
-            pagerWidth = 0,
-            slideWidth = 0,
-            thumbWidth = 0,
-            interval = null,
-            isTouch = ('ontouchstart' in document.documentElement);
-        var refresh = {};
-
-        refresh.chbreakpoint = function () {
-            windowW = $(window).width();
-            if (settings.responsive.length) {
-                var item;
-                if (settings.autoWidth === false) {
-                    item = settings.item;
-                }
-                if (windowW < settings.responsive[0].breakpoint) {
-                    for (var i = 0; i < settings.responsive.length; i++) {
-                        if (windowW < settings.responsive[i].breakpoint) {
-                            breakpoint = settings.responsive[i].breakpoint;
-                            resposiveObj = settings.responsive[i];
-                        }
-                    }
-                }
-                if (typeof resposiveObj !== 'undefined' && resposiveObj !== null) {
-                    for (var j in resposiveObj.settings) {
-                        if (resposiveObj.settings.hasOwnProperty(j)) {
-                            if (typeof settingsTemp[j] === 'undefined' || settingsTemp[j] === null) {
-                                settingsTemp[j] = settings[j];
-                            }
-                            settings[j] = resposiveObj.settings[j];
-                        }
-                    }
-                }
-                if (!$.isEmptyObject(settingsTemp) && windowW > settings.responsive[0].breakpoint) {
-                    for (var k in settingsTemp) {
-                        if (settingsTemp.hasOwnProperty(k)) {
-                            settings[k] = settingsTemp[k];
-                        }
-                    }
-                }
-                if (settings.autoWidth === false) {
-                    if (slideValue > 0 && slideWidth > 0) {
-                        if (item !== settings.item) {
-                            scene = Math.round(slideValue / ((slideWidth + settings.slideMargin) * settings.slideMove));
-                        }
-                    }
-                }
-            }
-        };
-
-        refresh.calSW = function () {
-            if (settings.autoWidth === false) {
-                slideWidth = (elSize - ((settings.item * (settings.slideMargin)) - settings.slideMargin)) / settings.item;
-            }
-        };
-
-        refresh.calWidth = function (cln) {
-            var ln = cln === true ? $slide.find('.lslide').length : $children.length;
-            if (settings.autoWidth === false) {
-                w = ln * (slideWidth + settings.slideMargin);
-            } else {
-                w = 0;
-                for (var i = 0; i < ln; i++) {
-                    w += (parseInt($children.eq(i).width()) + settings.slideMargin);
-                }
-            }
-            return w;
-        };
-        plugin = {
-            doCss: function () {
-                var support = function () {
-                    var transition = ['transition', 'MozTransition', 'WebkitTransition', 'OTransition', 'msTransition', 'KhtmlTransition'];
-                    var root = document.documentElement;
-                    for (var i = 0; i < transition.length; i++) {
-                        if (transition[i] in root.style) {
-                            return true;
-                        }
-                    }
-                };
-                if (settings.useCSS && support()) {
-                    return true;
-                }
-                return false;
-            },
-            keyPress: function () {
-                if (settings.keyPress) {
-                    $(document).on('keyup.lightslider', function (e) {
-                        if (!$(':focus').is('input, textarea')) {
-                            if (e.preventDefault) {
-                                e.preventDefault();
-                            } else {
-                                e.returnValue = false;
-                            }
-                            if (e.keyCode === 37) {
-                                $el.goToPrevSlide();
-                            } else if (e.keyCode === 39) {
-                                $el.goToNextSlide();
-                            }
-                        }
-                    });
-                }
-            },
-            controls: function () {
-                if (settings.controls) {
-                    $el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
-                    if (!settings.autoWidth) {
-                        if (length <= settings.item) {
-                            $slide.find('.lSAction').hide();
-                        }
-                    } else {
-                        if (refresh.calWidth(false) < elSize) {
-                            $slide.find('.lSAction').hide();
-                        }
-                    }
-                    $slide.find('.lSAction a').on('click', function (e) {
-                        if (e.preventDefault) {
-                            e.preventDefault();
-                        } else {
-                            e.returnValue = false;
-                        }
-                        if ($(this).attr('class') === 'lSPrev') {
-                            $el.goToPrevSlide();
-                        } else {
-                            $el.goToNextSlide();
-                        }
-                        return false;
-                    });
-                }
-            },
-            initialStyle: function () {
-                var $this = this;
-                if (settings.mode === 'fade') {
-                    settings.autoWidth = false;
-                    settings.slideEndAnimation = false;
-                }
-                if (settings.auto) {
-                    settings.slideEndAnimation = false;
-                }
-                if (settings.autoWidth) {
-                    settings.slideMove = 1;
-                    settings.item = 1;
-                }
-                if (settings.loop) {
-                    settings.slideMove = 1;
-                    settings.freeMove = false;
-                }
-                settings.onBeforeStart.call(this, $el);
-                refresh.chbreakpoint();
-                $el.addClass('lightSlider').wrap('<div class="lSSlideOuter ' + settings.addClass + '"><div class="lSSlideWrapper"></div></div>');
-                $slide = $el.parent('.lSSlideWrapper');
-                if (settings.rtl === true) {
-                    $slide.parent().addClass('lSrtl');
-                }
-                if (settings.vertical) {
-                    $slide.parent().addClass('vertical');
-                    elSize = settings.verticalHeight;
-                    $slide.css('height', elSize + 'px');
-                } else {
-                    elSize = $el.outerWidth();
-                }
-                $children.addClass('lslide');
-                if (settings.loop === true && settings.mode === 'slide') {
-                    refresh.calSW();
-                    refresh.clone = function () {
-                        if (refresh.calWidth(true) > elSize) {
-                            /**/
-                            var tWr = 0,
-                                tI = 0;
-                            for (var k = 0; k < $children.length; k++) {
-                                tWr += (parseInt($el.find('.lslide').eq(k).width()) + settings.slideMargin);
-                                tI++;
-                                if (tWr >= (elSize + settings.slideMargin)) {
-                                    break;
-                                }
-                            }
-                            var tItem = settings.autoWidth === true ? tI : settings.item;
-
-                            /**/
-                            if (tItem < $el.find('.clone.left').length) {
-                                for (var i = 0; i < $el.find('.clone.left').length - tItem; i++) {
-                                    $children.eq(i).remove();
-                                }
-                            }
-                            if (tItem < $el.find('.clone.right').length) {
-                                for (var j = $children.length - 1; j > ($children.length - 1 - $el.find('.clone.right').length); j--) {
-                                    scene--;
-                                    $children.eq(j).remove();
-                                }
-                            }
-                            /**/
-                            for (var n = $el.find('.clone.right').length; n < tItem; n++) {
-                                $el.find('.lslide').eq(n).clone().removeClass('lslide').addClass('clone right').appendTo($el);
-                                scene++;
-                            }
-                            for (var m = $el.find('.lslide').length - $el.find('.clone.left').length; m > ($el.find('.lslide').length - tItem); m--) {
-                                $el.find('.lslide').eq(m - 1).clone().removeClass('lslide').addClass('clone left').prependTo($el);
-                            }
-                            $children = $el.children();
-                        } else {
-                            if ($children.hasClass('clone')) {
-                                $el.find('.clone').remove();
-                                $this.move($el, 0);
-                            }
-                        }
-                    };
-                    refresh.clone();
-                }
-                refresh.sSW = function () {
-                    length = $children.length;
-                    if (settings.rtl === true && settings.vertical === false) {
-                        gutter = 'margin-left';
-                    }
-                    if (settings.autoWidth === false) {
-                        $children.css(property, slideWidth + 'px');
-                    }
-                    $children.css(gutter, settings.slideMargin + 'px');
-                    w = refresh.calWidth(false);
-                    $el.css(property, w + 'px');
-                    if (settings.loop === true && settings.mode === 'slide') {
-                        if (on === false) {
-                            scene = $el.find('.clone.left').length;
-                        }
-                    }
-                };
-                refresh.calL = function () {
-                    $children = $el.children();
-                    length = $children.length;
-                };
-                if (this.doCss()) {
-                    $slide.addClass('usingCss');
-                }
-                refresh.calL();
-                if (settings.mode === 'slide') {
-                    refresh.calSW();
-                    refresh.sSW();
-                    if (settings.loop === true) {
-                        slideValue = $this.slideValue();
-                        this.move($el, slideValue);
-                    }
-                    if (settings.vertical === false) {
-                        this.setHeight($el, false);
-                    }
-
-                } else {
-                    this.setHeight($el, true);
-                    $el.addClass('lSFade');
-                    if (!this.doCss()) {
-                        $children.fadeOut(0);
-                        $children.eq(scene).fadeIn(0);
-                    }
-                }
-                if (settings.loop === true && settings.mode === 'slide') {
-                    $children.eq(scene).addClass('active');
-                } else {
-                    $children.first().addClass('active');
-                }
-            },
-            pager: function () {
-                var $this = this;
-                refresh.createPager = function () {
-                    thumbWidth = (elSize - ((settings.thumbItem * (settings.thumbMargin)) - settings.thumbMargin)) / settings.thumbItem;
-                    var $children = $slide.find('.lslide');
-                    var length = $slide.find('.lslide').length;
-                    var i = 0,
-                        pagers = '',
-                        v = 0;
-                    for (i = 0; i < length; i++) {
-                        if (settings.mode === 'slide') {
-                            // calculate scene * slide value
-                            if (!settings.autoWidth) {
-                                v = i * ((slideWidth + settings.slideMargin) * settings.slideMove);
-                            } else {
-                                v += ((parseInt($children.eq(i).width()) + settings.slideMargin) * settings.slideMove);
-                            }
-                        }
-                        var thumb = $children.eq(i * settings.slideMove).attr('data-thumb');
-                        if (settings.gallery === true) {
-                            pagers += '<li style="width:100%;' + property + ':' + thumbWidth + 'px;' + gutter + ':' + settings.thumbMargin + 'px"><a href="#"><img src="' + thumb + '" /></a></li>';
-                        } else {
-                            pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
-                        }
-                        if (settings.mode === 'slide') {
-                            if ((v) >= w - elSize - settings.slideMargin) {
-                                i = i + 1;
-                                var minPgr = 2;
-                                if (settings.autoWidth) {
-                                    pagers += '<li><a href="#">' + (i + 1) + '</a></li>';
-                                    minPgr = 1;
-                                }
-                                if (i < minPgr) {
-                                    pagers = null;
-                                    $slide.parent().addClass('noPager');
-                                } else {
-                                    $slide.parent().removeClass('noPager');
-                                }
-                                break;
-                            }
-                        }
-                    }
-                    var $cSouter = $slide.parent();
-                    $cSouter.find('.lSPager').html(pagers);
-                    if (settings.gallery === true) {
-                        if (settings.vertical === true) {
-                            // set Gallery thumbnail width
-                            $cSouter.find('.lSPager').css('width', settings.vThumbWidth + 'px');
-                        }
-                        pagerWidth = (i * (settings.thumbMargin + thumbWidth)) + 0.5;
-                        $cSouter.find('.lSPager').css({
-                            property: pagerWidth + 'px',
-                            'transition-duration': settings.speed + 'ms'
-                        });
-                        if (settings.vertical === true) {
-                            $slide.parent().css('padding-right', (settings.vThumbWidth + settings.galleryMargin) + 'px');
-                        }
-                        $cSouter.find('.lSPager').css(property, pagerWidth + 'px');
-                    }
-                    var $pager = $cSouter.find('.lSPager').find('li');
-                    $pager.first().addClass('active');
-                    $pager.on('click', function () {
-                        if (settings.loop === true && settings.mode === 'slide') {
-                            scene = scene + ($pager.index(this) - $cSouter.find('.lSPager').find('li.active').index());
-                        } else {
-                            scene = $pager.index(this);
-                        }
-                        $el.mode(false);
-                        if (settings.gallery === true) {
-                            $this.slideThumb();
-                        }
-                        return false;
-                    });
-                };
-                if (settings.pager) {
-                    var cl = 'lSpg';
-                    if (settings.gallery) {
-                        cl = 'lSGallery';
-                    }
-                    $slide.after('<ul class="lSPager ' + cl + '"></ul>');
-                    var gMargin = (settings.vertical) ? 'margin-left' : 'margin-top';
-                    $slide.parent().find('.lSPager').css(gMargin, settings.galleryMargin + 'px');
-                    refresh.createPager();
-                }
-
-                setTimeout(function () {
-                    refresh.init();
-                }, 0);
-            },
-            setHeight: function (ob, fade) {
-                var obj = null,
-                    $this = this;
-                if (settings.loop) {
-                    obj = ob.children('.lslide ').first();
-                } else {
-                    obj = ob.children().first();
-                }
-                var setCss = function () {
-                    var tH = obj.outerHeight(),
-                        tP = 0,
-                        tHT = tH;
-                    if (fade) {
-                        tH = 0;
-                        tP = ((tHT) * 100) / elSize;
-                    }
-                    ob.css({
-                        'height': tH + 'px',
-                        'padding-bottom': tP + '%'
-                    });
-                };
-                setCss();
-                if (obj.find('img').length) {
-                    if ( obj.find('img')[0].complete) {
-                        setCss();
-                        if (!interval) {
-                            $this.auto();
-                        }
-                    }else{
-                        obj.find('img').load(function () {
-                            setTimeout(function () {
-                                setCss();
-                                if (!interval) {
-                                    $this.auto();
-                                }
-                            }, 100);
-                        });
-                    }
-                }else{
-                    if (!interval) {
-                        $this.auto();
-                    }
-                }
-            },
-            active: function (ob, t) {
-                if (this.doCss() && settings.mode === 'fade') {
-                    $slide.addClass('on');
-                }
-                var sc = 0;
-                if (scene * settings.slideMove < length) {
-                    ob.removeClass('active');
-                    if (!this.doCss() && settings.mode === 'fade' && t === false) {
-                        ob.fadeOut(settings.speed);
-                    }
-                    if (t === true) {
-                        sc = scene;
-                    } else {
-                        sc = scene * settings.slideMove;
-                    }
-                    //t === true ? sc = scene : sc = scene * settings.slideMove;
-                    var l, nl;
-                    if (t === true) {
-                        l = ob.length;
-                        nl = l - 1;
-                        if (sc + 1 >= l) {
-                            sc = nl;
-                        }
-                    }
-                    if (settings.loop === true && settings.mode === 'slide') {
-                        //t === true ? sc = scene - $el.find('.clone.left').length : sc = scene * settings.slideMove;
-                        if (t === true) {
-                            sc = scene - $el.find('.clone.left').length;
-                        } else {
-                            sc = scene * settings.slideMove;
-                        }
-                        if (t === true) {
-                            l = ob.length;
-                            nl = l - 1;
-                            if (sc + 1 === l) {
-                                sc = nl;
-                            } else if (sc + 1 > l) {
-                                sc = 0;
-                            }
-                        }
-                    }
-
-                    if (!this.doCss() && settings.mode === 'fade' && t === false) {
-                        ob.eq(sc).fadeIn(settings.speed);
-                    }
-                    ob.eq(sc).addClass('active');
-                } else {
-                    ob.removeClass('active');
-                    ob.eq(ob.length - 1).addClass('active');
-                    if (!this.doCss() && settings.mode === 'fade' && t === false) {
-                        ob.fadeOut(settings.speed);
-                        ob.eq(sc).fadeIn(settings.speed);
-                    }
-                }
-            },
-            move: function (ob, v) {
-                if (settings.rtl === true) {
-                    v = -v;
-                }
-                if (this.doCss()) {
-                    if (settings.vertical === true) {
-                        ob.css({
-                            'transform': 'translate3d(0px, ' + (-v) + 'px, 0px)',
-                            '-webkit-transform': 'translate3d(0px, ' + (-v) + 'px, 0px)'
-                        });
-                    } else {
-                        ob.css({
-                            'transform': 'translate3d(' + (-v) + 'px, 0px, 0px)',
-                            '-webkit-transform': 'translate3d(' + (-v) + 'px, 0px, 0px)',
-                        });
-                    }
-                } else {
-                    if (settings.vertical === true) {
-                        ob.css('position', 'relative').animate({
-                            top: -v + 'px'
-                        }, settings.speed, settings.easing);
-                    } else {
-                        ob.css('position', 'relative').animate({
-                            left: -v + 'px'
-                        }, settings.speed, settings.easing);
-                    }
-                }
-                var $thumb = $slide.parent().find('.lSPager').find('li');
-                this.active($thumb, true);
-            },
-            fade: function () {
-                this.active($children, false);
-                var $thumb = $slide.parent().find('.lSPager').find('li');
-                this.active($thumb, true);
-            },
-            slide: function () {
-                var $this = this;
-                refresh.calSlide = function () {
-                    if (w > elSize) {
-                        slideValue = $this.slideValue();
-                        $this.active($children, false);
-                        if ((slideValue) > w - elSize - settings.slideMargin) {
-                            slideValue = w - elSize - settings.slideMargin;
-                        } else if (slideValue < 0) {
-                            slideValue = 0;
-                        }
-                        $this.move($el, slideValue);
-                        if (settings.loop === true && settings.mode === 'slide') {
-                            if (scene >= (length - ($el.find('.clone.left').length / settings.slideMove))) {
-                                $this.resetSlide($el.find('.clone.left').length);
-                            }
-                            if (scene === 0) {
-                                $this.resetSlide($slide.find('.lslide').length);
-                            }
-                        }
-                    }
-                };
-                refresh.calSlide();
-            },
-            resetSlide: function (s) {
-                var $this = this;
-                $slide.find('.lSAction a').addClass('disabled');
-                setTimeout(function () {
-                    scene = s;
-                    $slide.css('transition-duration', '0ms');
-                    slideValue = $this.slideValue();
-                    $this.active($children, false);
-                    plugin.move($el, slideValue);
-                    setTimeout(function () {
-                        $slide.css('transition-duration', settings.speed + 'ms');
-                        $slide.find('.lSAction a').removeClass('disabled');
-                    }, 50);
-                }, settings.speed + 100);
-            },
-            slideValue: function () {
-                var _sV = 0;
-                if (settings.autoWidth === false) {
-                    _sV = scene * ((slideWidth + settings.slideMargin) * settings.slideMove);
-                } else {
-                    _sV = 0;
-                    for (var i = 0; i < scene; i++) {
-                        _sV += (parseInt($children.eq(i).width()) + settings.slideMargin);
-                    }
-                }
-                return _sV;
-            },
-            slideThumb: function () {
-                var position;
-                switch (settings.currentPagerPosition) {
-                    case 'left':
-                        position = 0;
-                        break;
-                    case 'middle':
-                        position = (elSize / 2) - (thumbWidth / 2);
-                        break;
-                    case 'right':
-                        position = elSize - thumbWidth;
-                }
-                var sc = scene - $el.find('.clone.left').length;
-                var $pager = $slide.parent().find('.lSPager');
-                if (settings.mode === 'slide' && settings.loop === true) {
-                    if (sc >= $pager.children().length) {
-                        sc = 0;
-                    } else if (sc < 0) {
-                        sc = $pager.children().length;
-                    }
-                }
-                var thumbSlide = sc * ((thumbWidth + settings.thumbMargin)) - (position);
-                if ((thumbSlide + elSize) > pagerWidth) {
-                    thumbSlide = pagerWidth - elSize - settings.thumbMargin;
-                }
-                if (thumbSlide < 0) {
-                    thumbSlide = 0;
-                }
-                this.move($pager, thumbSlide);
-            },
-            auto: function () {
-                if (settings.auto) {
-                    clearInterval(interval);
-                    interval = setInterval(function () {
-                        $el.goToNextSlide();
-                    }, settings.pause);
-                }
-            },
-            pauseOnHover: function(){
-                var $this = this;
-                if (settings.auto && settings.pauseOnHover) {
-                    $slide.on('mouseenter', function(){
-                        $(this).addClass('ls-hover');
-                        $el.pause();
-                        settings.auto = true;
-                    });
-                    $slide.on('mouseleave',function(){
-                        $(this).removeClass('ls-hover');
-                        if (!$slide.find('.lightSlider').hasClass('lsGrabbing')) {
-                            $this.auto();
-                        }
-                    });
-                }
-            },
-            touchMove: function (endCoords, startCoords) {
-                $slide.css('transition-duration', '0ms');
-                if (settings.mode === 'slide') {
-                    var distance = endCoords - startCoords;
-                    var swipeVal = slideValue - distance;
-                    if ((swipeVal) >= w - elSize - settings.slideMargin) {
-                        if (settings.freeMove === false) {
-                            swipeVal = w - elSize - settings.slideMargin;
-                        } else {
-                            var swipeValT = w - elSize - settings.slideMargin;
-                            swipeVal = swipeValT + ((swipeVal - swipeValT) / 5);
-
-                        }
-                    } else if (swipeVal < 0) {
-                        if (settings.freeMove === false) {
-                            swipeVal = 0;
-                        } else {
-                            swipeVal = swipeVal / 5;
-                        }
-                    }
-                    this.move($el, swipeVal);
-                }
-            },
-
-            touchEnd: function (distance) {
-                $slide.css('transition-duration', settings.speed + 'ms');
-                if (settings.mode === 'slide') {
-                    var mxVal = false;
-                    var _next = true;
-                    slideValue = slideValue - distance;
-                    if ((slideValue) > w - elSize - settings.slideMargin) {
-                        slideValue = w - elSize - settings.slideMargin;
-                        if (settings.autoWidth === false) {
-                            mxVal = true;
-                        }
-                    } else if (slideValue < 0) {
-                        slideValue = 0;
-                    }
-                    var gC = function (next) {
-                        var ad = 0;
-                        if (!mxVal) {
-                            if (next) {
-                                ad = 1;
-                            }
-                        }
-                        if (!settings.autoWidth) {
-                            var num = slideValue / ((slideWidth + settings.slideMargin) * settings.slideMove);
-                            scene = parseInt(num) + ad;
-                            if (slideValue >= (w - elSize - settings.slideMargin)) {
-                                if (num % 1 !== 0) {
-                                    scene++;
-                                }
-                            }
-                        } else {
-                            var tW = 0;
-                            for (var i = 0; i < $children.length; i++) {
-                                tW += (parseInt($children.eq(i).width()) + settings.slideMargin);
-                                scene = i + ad;
-                                if (tW >= slideValue) {
-                                    break;
-                                }
-                            }
-                        }
-                    };
-                    if (distance >= settings.swipeThreshold) {
-                        gC(false);
-                        _next = false;
-                    } else if (distance <= -settings.swipeThreshold) {
-                        gC(true);
-                        _next = false;
-                    }
-                    $el.mode(_next);
-                    this.slideThumb();
-                } else {
-                    if (distance >= settings.swipeThreshold) {
-                        $el.goToPrevSlide();
-                    } else if (distance <= -settings.swipeThreshold) {
-                        $el.goToNextSlide();
-                    }
-                }
-            },
-
-
-
-            enableDrag: function () {
-                var $this = this;
-                if (!isTouch) {
-                    var startCoords = 0,
-                        endCoords = 0,
-                        isDraging = false;
-                    $slide.find('.lightSlider').addClass('lsGrab');
-                    $slide.on('mousedown', function (e) {
-                        if (w < elSize) {
-                            if (w !== 0) {
-                                return false;
-                            }
-                        }
-                        if ($(e.target).attr('class') !== ('lSPrev') && $(e.target).attr('class') !== ('lSNext')) {
-                            startCoords = (settings.vertical === true) ? e.pageY : e.pageX;
-                            isDraging = true;
-                            if (e.preventDefault) {
-                                e.preventDefault();
-                            } else {
-                                e.returnValue = false;
-                            }
-                            // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                            $slide.scrollLeft += 1;
-                            $slide.scrollLeft -= 1;
-                            // *
-                            $slide.find('.lightSlider').removeClass('lsGrab').addClass('lsGrabbing');
-                            clearInterval(interval);
-                        }
-                    });
-                    $(window).on('mousemove', function (e) {
-                        if (isDraging) {
-                            endCoords = (settings.vertical === true) ? e.pageY : e.pageX;
-                            $this.touchMove(endCoords, startCoords);
-                        }
-                    });
-                    $(window).on('mouseup', function (e) {
-                        if (isDraging) {
-                            $slide.find('.lightSlider').removeClass('lsGrabbing').addClass('lsGrab');
-                            isDraging = false;
-                            endCoords = (settings.vertical === true) ? e.pageY : e.pageX;
-                            var distance = endCoords - startCoords;
-                            if (Math.abs(distance) >= settings.swipeThreshold) {
-                                $(window).on('click.ls', function (e) {
-                                    if (e.preventDefault) {
-                                        e.preventDefault();
-                                    } else {
-                                        e.returnValue = false;
-                                    }
-                                    e.stopImmediatePropagation();
-                                    e.stopPropagation();
-                                    $(window).off('click.ls');
-                                });
-                            }
-
-                            $this.touchEnd(distance);
-
-                        }
-                    });
-                }
-            },
-
-
-
-
-            enableTouch: function () {
-                var $this = this;
-                if (isTouch) {
-                    var startCoords = {},
-                        endCoords = {};
-                    $slide.on('touchstart', function (e) {
-                        endCoords = e.originalEvent.targetTouches[0];
-                        startCoords.pageX = e.originalEvent.targetTouches[0].pageX;
-                        startCoords.pageY = e.originalEvent.targetTouches[0].pageY;
-                        clearInterval(interval);
-                    });
-                    $slide.on('touchmove', function (e) {
-                        if (w < elSize) {
-                            if (w !== 0) {
-                                return false;
-                            }
-                        }
-                        var orig = e.originalEvent;
-                        endCoords = orig.targetTouches[0];
-                        var xMovement = Math.abs(endCoords.pageX - startCoords.pageX);
-                        var yMovement = Math.abs(endCoords.pageY - startCoords.pageY);
-                        if (settings.vertical === true) {
-                            if ((yMovement * 3) > xMovement) {
-                                e.preventDefault();
-                            }
-                            $this.touchMove(endCoords.pageY, startCoords.pageY);
-                        } else {
-                            if ((xMovement * 3) > yMovement) {
-                                e.preventDefault();
-                            }
-                            $this.touchMove(endCoords.pageX, startCoords.pageX);
-                        }
-
-                    });
-                    $slide.on('touchend', function () {
-                        if (w < elSize) {
-                            if (w !== 0) {
-                                return false;
-                            }
-                        }
-                        var distance;
-                        if (settings.vertical === true) {
-                            distance = endCoords.pageY - startCoords.pageY;
-                        } else {
-                            distance = endCoords.pageX - startCoords.pageX;
-                        }
-                        $this.touchEnd(distance);
-                    });
-                }
-            },
-            build: function () {
-                var $this = this;
-                $this.initialStyle();
-                if (this.doCss()) {
-
-                    if (settings.enableTouch === true) {
-                        $this.enableTouch();
-                    }
-                    if (settings.enableDrag === true) {
-                        $this.enableDrag();
-                    }
-                }
-
-                $(window).on('focus', function(){
-                    $this.auto();
+            if (getAge() < 64.5) {
+                $('#health_only').slideDown(300);
+                $('#insurance_type').val('health');
+                $('#form_title').text(function () {
+                    return $(this).text().replace("medicare", "health");
                 });
-
-                $(window).on('blur', function(){
-                    clearInterval(interval);
+                $('#form_info').text(function () {
+                    return $(this).text().replace("medicare", "health");
                 });
+                $("#household-size").prop('required', true);
+                $("#income").prop('required', true);
+            }
+        }
+    });
 
-                $this.pager();
-                $this.pauseOnHover();
-                $this.controls();
-                $this.keyPress();
-            }
-        };
-        plugin.build();
-        refresh.init = function () {
-            refresh.chbreakpoint();
-            if (settings.vertical === true) {
-                if (settings.item > 1) {
-                    elSize = settings.verticalHeight;
-                } else {
-                    elSize = $children.outerHeight();
-                }
-                $slide.css('height', elSize + 'px');
-            } else {
-                elSize = $slide.outerWidth();
-            }
-            if (settings.loop === true && settings.mode === 'slide') {
-                refresh.clone();
-            }
-            refresh.calL();
-            if (settings.mode === 'slide') {
-                $el.removeClass('lSSlide');
-            }
-            if (settings.mode === 'slide') {
-                refresh.calSW();
-                refresh.sSW();
-            }
-            setTimeout(function () {
-                if (settings.mode === 'slide') {
-                    $el.addClass('lSSlide');
-                }
-            }, 1000);
-            if (settings.pager) {
-                refresh.createPager();
-            }
-            if (settings.adaptiveHeight === true && settings.vertical === false) {
-                $el.css('height', $children.eq(scene).outerHeight(true));
-            }
-            if (settings.adaptiveHeight === false) {
-                if (settings.mode === 'slide') {
-                    if (settings.vertical === false) {
-                        plugin.setHeight($el, false);
-                    }else{
-                        plugin.auto();
-                    }
-                } else {
-                    plugin.setHeight($el, true);
-                }
-            }
-            if (settings.gallery === true) {
-                plugin.slideThumb();
-            }
-            if (settings.mode === 'slide') {
-                plugin.slide();
-            }
-            if (settings.autoWidth === false) {
-                if ($children.length <= settings.item) {
-                    $slide.find('.lSAction').hide();
-                } else {
-                    $slide.find('.lSAction').show();
-                }
-            } else {
-                if ((refresh.calWidth(false) < elSize) && (w !== 0)) {
-                    $slide.find('.lSAction').hide();
-                } else {
-                    $slide.find('.lSAction').show();
-                }
-            }
-        };
-        $el.goToPrevSlide = function () {
-            if (scene > 0) {
-                settings.onBeforePrevSlide.call(this, $el, scene);
-                scene--;
-                $el.mode(false);
-                if (settings.gallery === true) {
-                    plugin.slideThumb();
-                }
-            } else {
-                if (settings.loop === true) {
-                    settings.onBeforePrevSlide.call(this, $el, scene);
-                    if (settings.mode === 'fade') {
-                        var l = (length - 1);
-                        scene = parseInt(l / settings.slideMove);
-                    }
-                    $el.mode(false);
-                    if (settings.gallery === true) {
-                        plugin.slideThumb();
-                    }
-                } else if (settings.slideEndAnimation === true) {
-                    $el.addClass('leftEnd');
-                    setTimeout(function () {
-                        $el.removeClass('leftEnd');
-                    }, 400);
-                }
-            }
-        };
-        $el.goToNextSlide = function () {
-            var nextI = true;
-            if (settings.mode === 'slide') {
-                var _slideValue = plugin.slideValue();
-                nextI = _slideValue < w - elSize - settings.slideMargin;
-            }
-            if (((scene * settings.slideMove) < length - settings.slideMove) && nextI) {
-                settings.onBeforeNextSlide.call(this, $el, scene);
-                scene++;
-                $el.mode(false);
-                if (settings.gallery === true) {
-                    plugin.slideThumb();
-                }
-            } else {
-                if (settings.loop === true) {
-                    settings.onBeforeNextSlide.call(this, $el, scene);
-                    scene = 0;
-                    $el.mode(false);
-                    if (settings.gallery === true) {
-                        plugin.slideThumb();
-                    }
-                } else if (settings.slideEndAnimation === true) {
-                    $el.addClass('rightEnd');
-                    setTimeout(function () {
-                        $el.removeClass('rightEnd');
-                    }, 400);
-                }
-            }
-        };
-        $el.mode = function (_touch) {
-            if (settings.adaptiveHeight === true && settings.vertical === false) {
-                $el.css('height', $children.eq(scene).outerHeight(true));
-            }
-            if (on === false) {
-                if (settings.mode === 'slide') {
-                    if (plugin.doCss()) {
-                        $el.addClass('lSSlide');
-                        if (settings.speed !== '') {
-                            $slide.css('transition-duration', settings.speed + 'ms');
-                        }
-                        if (settings.cssEasing !== '') {
-                            $slide.css('transition-timing-function', settings.cssEasing);
-                        }
-                    }
-                } else {
-                    if (plugin.doCss()) {
-                        if (settings.speed !== '') {
-                            $el.css('transition-duration', settings.speed + 'ms');
-                        }
-                        if (settings.cssEasing !== '') {
-                            $el.css('transition-timing-function', settings.cssEasing);
-                        }
-                    }
-                }
-            }
-            if (!_touch) {
-                settings.onBeforeSlide.call(this, $el, scene);
-            }
-            if (settings.mode === 'slide') {
-                plugin.slide();
-            } else {
-                plugin.fade();
-            }
-            if (!$slide.hasClass('ls-hover')) {
-                plugin.auto();
-            }
-            setTimeout(function () {
-                if (!_touch) {
-                    settings.onAfterSlide.call(this, $el, scene);
-                }
-            }, settings.speed);
-            on = true;
-        };
-        $el.play = function () {
-            $el.goToNextSlide();
-            settings.auto = true;
-            plugin.auto();
-        };
-        $el.pause = function () {
-            settings.auto = false;
-            clearInterval(interval);
-        };
-        $el.refresh = function () {
-            refresh.init();
-        };
-        $el.getCurrentSlideCount = function () {
-            var sc = scene;
-            if (settings.loop) {
-                var ln = $slide.find('.lslide').length,
-                    cl = $el.find('.clone.left').length;
-                if (scene <= cl - 1) {
-                    sc = ln + (scene - cl);
-                } else if (scene >= (ln + cl)) {
-                    sc = scene - ln - cl;
-                } else {
-                    sc = scene - cl;
-                }
-            }
-            return sc + 1;
-        };
-        $el.getTotalSlideCount = function () {
-            return $slide.find('.lslide').length;
-        };
-        $el.goToSlide = function (s) {
-            if (settings.loop) {
-                scene = (s + $el.find('.clone.left').length - 1);
-            } else {
-                scene = s;
-            }
-            $el.mode(false);
-            if (settings.gallery === true) {
-                plugin.slideThumb();
-            }
-        };
-        $el.destroy = function () {
-            if ($el.lightSlider) {
-                $el.goToPrevSlide = function(){};
-                $el.goToNextSlide = function(){};
-                $el.mode = function(){};
-                $el.play = function(){};
-                $el.pause = function(){};
-                $el.refresh = function(){};
-                $el.getCurrentSlideCount = function(){};
-                $el.getTotalSlideCount = function(){};
-                $el.goToSlide = function(){};
-                $el.lightSlider = null;
-                refresh = {
-                    init : function(){}
-                };
-                $el.parent().parent().find('.lSAction, .lSPager').remove();
-                $el.removeClass('lightSlider lSFade lSSlide lsGrab lsGrabbing leftEnd right').removeAttr('style').unwrap().unwrap();
-                $el.children().removeAttr('style');
-                $children.removeClass('lslide active');
-                $el.find('.clone').remove();
-                $children = null;
-                interval = null;
-                on = false;
-                scene = 0;
-            }
 
-        };
-        setTimeout(function () {
-            settings.onSliderLoad.call(this, $el);
-        }, 10);
-        $(window).on('resize orientationchange', function (e) {
-            setTimeout(function () {
-                if (e.preventDefault) {
-                    e.preventDefault();
-                } else {
-                    e.returnValue = false;
-                }
-                refresh.init();
-            }, 200);
+    $(function () {
+
+        /*
+         $(document).delegate("a","click",function() {
+         window.onbeforeunload = null;
+         });*/
+
+        /*$(document).delegate("form","click",function() {
+         window.onbeforeunload = null;
+         });
+         */
+
+    });
+
+
+    /* function to hide/show health condtions on long form - Simon Lacey */
+
+    function h_conditions() {
+        document.getElementById('previous_conditions').style.display = "none";
+    }
+
+    function show() {
+        document.getElementById('previous_conditions').style.display = "block";
+    }
+
+
+    /* BrokersWeb Exit Script ---------------------------
+     var closewindow = true;
+     // leave page code for BorkersWeb
+     window.onbeforeunload = function() {
+     if (closewindow) {
+     var ifrm = $('<iframe></iframe>');
+     ifrm.attr({
+     'src': 'partners-list.php?state=' + window.state,
+     'width': '100%',
+     'height': '1200',
+     'frameborder': '0'
+     });
+     $('body').empty().append(ifrm[0]);
+     //location = 'partners-list.php?state=' + window.state;
+     return "Congratulations! You're prequalified by the following providers." + "\n\r" + "Stay on this page to view them now.";
+     }
+     };
+
+     $('a').on('click', function(){
+     closewindow = false;
+     });
+     $('input[type=submit]').on('click', function(){
+     closewindow = false;
+     });
+     */
+
+
+
+
+
+
+    $("#household-size").change(function () {
+        $("#income").empty();
+        switch ($("#household-size").val()) {
+            case '1':
+                $("#income").append(new Option("$0 to $29,000", "0-29,000"));
+                $("#income").append(new Option("$29,000 to $47,000", "29,000-47,000"));
+                $("#income").append(new Option("$47,000 or more", "47,000 or more"));
+                $("#income").val("29,000-47,000");
+                break;
+            case '2':
+                $("#income").append(new Option("$0 to $40,000", "0-40,000"));
+                $("#income").append(new Option("$40,000 to $64,000", "40,000-64,000"));
+                $("#income").append(new Option("$64,000 or more", "64,000 or more"));
+                $("#income").val("40,000-64,000");
+                break;
+            case '3':
+                $("#income").append(new Option("$0 to $50,000", "0-50,000"));
+                $("#income").append(new Option("$50,000 to $80,000", "50,000-80,000"));
+                $("#income").append(new Option("$80,000 or more", "80,000 or more"));
+                $("#income").val("50,000-80,000");
+                break;
+            case '4':
+                $("#income").append(new Option("$0 to $61,000", "0-61,000"));
+                $("#income").append(new Option("$61,000 to $97,000", "61,000-97,000"));
+                $("#income").append(new Option("$97,000 or more", "97,000 or more"));
+                $("#income").val("61,000-97,000");
+                break;
+            case '5':
+                $("#income").append(new Option("$0 to $71,000", "0-71,000"));
+                $("#income").append(new Option("$71,000 to $114,000", "71,000-114,000"));
+                $("#income").append(new Option("$114,000 or more", "114,000 or more"));
+                $("#income").val("71,000-114,000");
+                break;
+            case '6':
+                $("#income").append(new Option("$0 to $81,000", "0-81,000"));
+                $("#income").append(new Option("$81,000 to $130,000", "81,000-130,000"));
+                $("#income").append(new Option("$130,000 or more", "130,000 or more"));
+                $("#income").val("81,000-130,000");
+                break;
+            case '7':
+                $("#income").append(new Option("$0 to $92,000", "0-92,000"));
+                $("#income").append(new Option("$92,000 to $147,000", "92,000-147,000"));
+                $("#income").append(new Option("$147,000 or more", "147,000 or more"));
+                $("#income").val("92,000-147,000");
+                break;
+            case '8+':
+                $("#income").append(new Option("$0 to $102,000", "0-102,000"));
+                $("#income").append(new Option("$102,000 to $164,000", "102,000-164,000"));
+                $("#income").append(new Option("$164,000 or more", "164,000 or more"));
+                $("#income").val("102,000-164,000");
+                break;
+        }
+        ;
+    });
+
+
+
+    $("form").submit(function(){
+        $("#preloader").css("z-index", "10");
+    });
+    var terms = $('.terms').text();
+    $("#TCPA_Language").val(terms);
+
+
+/*
+
+
+    let dobpattern = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+
+    let dobpattern2 = /^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+
+    let dobpattern3 = "[0-9]{2}/[0-9]{2}/[0-9]{4}";
+
+
+    //$("#date").attr("pattern", dobpattern2);
+
+
+    function f(){
+        let exp = "^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:XXX)$",
+            year = new Date().getFullYear(),
+            maxYear = year - 0,
+            minYear = year - 120;
+
+        let arr = [];
+        for (let i = minYear; i<maxYear; i+=1 ) {
+            arr.push(i)
+        }
+        return exp.replace('XXX', arr.join('|'))
+    }
+
+pp = ^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|20)?\d{2})$
+
+*/
+
+
+/*
+    //This will execute when your page is loaded
+    $(function () {
+        //Required attribute fallback
+        $('#medicare').submit(function () {
+            if (!attributeSupported("required") || ($.browser.safari)) {
+                //If required attribute is not supported or browser is Safari
+                // (Safari thinks that it has this attribute, but it does not work), then check all fields that has required attribute
+                $("#medicare [required]").each(function (index) {
+                    if (!$(this).val()) {
+                        //If at least one required value is empty, then ask to fill all required fields.
+                        alert("Please fill all required fields.");
+                        return false;
+                    }
+                });
+            }
+            return false; //This is a test form and I'm not going to submit it
         });
-        return this;
-    };
-}(jQuery));
+    });
+
+    */
+
+
+    //This checks if a specific attribute is supported
+    function attributeSupported(attribute) {
+        return (attribute in document.createElement("input"));
+    }
+
+
+
+    function isSafari() {
+        return /safari/.test(navigator.userAgent.toLowerCase());
+    }
+
+    //Required attribute fallback
+    $('#medicare').submit(function() {
+        if (!attributeSupported("required") || isSafari()) {
+            //If required attribute is not supported or browser is Safari
+            // (Safari thinks that it has this attribute, but it does not work), then check all fields that has required attribute
+            $("#medicare [required]").each(function(index) {
+                if (!$(this).val()) {
+                    //If at least one required value is empty, then ask to fill all required fields.
+                    alert("Please fill all required fields.");
+                    return false;
+                }
+            });
+        }
+        return false; //This is a test form and I'm not going to submit it
+    });
+
+
+
+
+
+
+
+});
+
+
+
 

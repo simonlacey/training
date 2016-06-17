@@ -16,16 +16,24 @@
             </ul><!-- end hero content -->
 
             <!-- start hero form-->
-            <form action="form.php" method="post" class="hero-zip-submit">
+            <form action="form.php" id="form1" method="post" class="hero-zip-submit">
                 <div class="row">
-                    <div class="small-10 medium-4 columns">
-                        <label>
+                    <div class="small-10 medium-5 columns">
 
-                            {{> hidden-fields-lp}}
+                        {{> hidden-fields-lp}}
+                        
+                        <div class="input-group">
+                            <input type="tel" class="input-group-field" id="hero-zip-submit-input" name="zip" pattern="\d{5}"  value="<?php echo $zip; ?>" placeholder="Enter your zip code...">
+                            <div class="input-group-button">
+                                <input type="submit" class="button" id="hero-zip-submit-button" value="Start Quote">
+                            </div>
+                        </div>
 
-                            <input type="tel" id="hero-zip-submit-input" name="zip" value="<?php echo $zip; ?>" placeholder="Enter your zip code...">
-                        </label>
-                            <button id="hero-zip-submit-button" type="submit" class="button">Start Quote <i class="fi-play"></i></button>
+                        <!-- todo hugo i replaced the form in hero with the one above. please make sure it works. thanks. -->
+                            <!--<label>
+                                <input type="tel" id="hero-zip-submit-input" name="zip" pattern="\d{5}"  value="<?php echo $zip; ?>" placeholder="Enter your zip code...">
+                            </label>
+                                <button id="hero-zip-submit-button" type="submit" class="button">Start Quote <i class="fi-play"></i></button>-->
                     </div>
                 </div>
             </form><!-- end hero form -->

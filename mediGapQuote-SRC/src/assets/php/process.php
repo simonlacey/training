@@ -243,6 +243,9 @@ function curl_wrapper($url, $urlmethod, $fields, $is_b = FALSE)
     }
     //execute post
     $result = curl_exec($ch);
+
+
+    doLog(print_r($fields_string, true));
     doLog(print_r($result, true));
 
     // if post was to boberdoo check if it was accepted
@@ -258,7 +261,7 @@ function curl_wrapper($url, $urlmethod, $fields, $is_b = FALSE)
     curl_close($ch);
     // if posting to and accepted by boberdoo send postback to hasoffers
 
-
+/*
     $servername = "hbcquotes.com";
     $username = "rxonline_intcms";
     $password = "PowBOyu1TJh00oFZ";
@@ -288,7 +291,7 @@ function curl_wrapper($url, $urlmethod, $fields, $is_b = FALSE)
 
 
 
-/*        GLOBAL $postback_code;
+        GLOBAL $postback_code;
         switch ($global_ver) {
             case 11	:$postback_code = 'SP1U';break;
             case 14	:
@@ -318,7 +321,7 @@ function curl_wrapper($url, $urlmethod, $fields, $is_b = FALSE)
             case 41	:$postback_code = 'SP33';break;
             case 42	:$postback_code = 'SP2z';break;
             default :$postback_code = '';
-        };*/
+        };
 
 
         if ($global_postback_url != '')
@@ -349,7 +352,7 @@ function curl_wrapper($url, $urlmethod, $fields, $is_b = FALSE)
 
             }
         }
-    }
+    }*/
 
 
 
@@ -446,8 +449,6 @@ $age_decimals = $age_decimals/(60*60*24*365);
 } else {
     $lead_type = 75;
 };*/
-
-$_POST['insurance_type'] == 'medicare';  //  MediGAP only medicare
 
 
 if($_POST['insurance_type'] == 'health'){
@@ -588,7 +589,7 @@ switch ($lead_type) {
         $Aff_ID = '';
         $Full_URL = '';
         $Landing_Page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $Landing_Page = substr($Landing_Page, 0, -11);
+        $Landing_Page = substr($Landing_Page, 0, -22);
 
         $params = array(
             'TYPE' => $lead_type,
@@ -754,7 +755,7 @@ switch ($lead_type) {
         $Aff_ID = '';
         $Full_URL = '';
         $Landing_Page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $Landing_Page = substr($Landing_Page, 0, -11);
+        $Landing_Page = substr($Landing_Page, 0, -22);
 
         $params = array(
             'TYPE' => $lead_type,

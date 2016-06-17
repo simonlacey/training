@@ -1,0 +1,178 @@
+/* --------------------------
+custom form styling
+-------------------------- */
+
+/* custom - input field styling */
+
+input[type="text"],
+input[type="select"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+#state,
+#request,
+.custom-label {
+  height: rem-calc(48)!important;
+  padding-left: rem-calc(20);
+  border-radius: $global-radius;
+}
+
+textarea {
+  border-radius: $global-radius;
+  padding-left: rem-calc(20);
+}
+
+/* --------------------------
+medicare form
+-------------------------- */
+
+.medicare-form {
+
+  @include breakpoint(small) {
+    padding: rem-calc(10 0 10 0);
+    background-color: darken($primary-color, 15);
+  }
+  @include breakpoint(medium) {
+    padding: rem-calc(30);
+    background-color: darken(#f6f8fd, 2);
+  }
+
+  .form-container {
+    border-radius: 10px;
+    border: 4px solid #d8e0e9;
+    @include breakpoint(small) {
+      background-color: $white;
+      padding: rem-calc(10 30);
+    }
+    @include breakpoint(medium) {
+      background-color: $white;
+      padding: rem-calc(20 60);
+    }
+  }
+
+  h3.form-header {
+    font-size: 1.7em;
+    font-weight: 300;
+    text-align: center;
+    padding-top: rem-calc(15);
+    line-height: 1.3em;
+  }
+
+  ul.checklist {
+    display: block;
+  }
+
+  li {
+    display: block;
+    list-style: none;
+  }
+
+  p.form-info {
+    font-size: 14px;
+    text-align: center;
+    @include breakpoint(small) {
+      padding-bottom: rem-calc(5);
+    }
+    @include breakpoint(medium) {
+      padding-bottom: rem-calc(10);
+    }
+  }
+
+  .terms {
+    font-size: .75em;
+  }
+
+  #previous_conditions {
+    margin-top: rem-calc(10);
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  hr {
+    padding: rem-calc(10 0);
+
+    @include breakpoint(small) {
+      width: 92%;
+    }
+    @include breakpoint(medium) {
+      width: 98%;
+    }
+
+  }
+
+  .button-submit-form {
+    background-color: $secondary-color;
+    margin-top: rem-calc(10);
+    border-radius: 30px;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 3px 10px rgba(255,102,66,0.2);
+
+    @include breakpoint(small) {
+      width: 100%;
+      font-size: 1.3em;
+    }
+
+    &:hover {
+      background-color: $primary-color;
+      box-shadow: 0 6px 18px rgba(0,100,95,0.6);
+    }
+
+    .fi-play {
+      font-size: 22px;
+      padding-left: 5px;
+    }
+
+  }
+}
+
+
+
+/* form validation states */
+
+input:invalid {
+  background-color: lighten($alert-color, 40);
+}
+
+input:required {
+  border-color: darken($success-color, 3);
+  border-width: 1px;
+}
+
+input:required:invalid {
+  border-color: lighten($alert-color, 22);
+}
+
+
+
+
+
+
+
+
+/* --------------------------
+gender button group
+-------------------------- */
+
+/*.gender-button-group {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0;
+  &:before {
+    content: attr(data-grouptype);
+    z-index: 99999;
+    color: #999;
+    display: block;
+    font-size: 1rem;
+    padding: 0.25em;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 42.5%;
+    top: 0.35rem;
+  }
+  button + button {
+    margin-left: 5px;
+  }
+}*/

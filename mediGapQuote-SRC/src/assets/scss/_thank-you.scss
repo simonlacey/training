@@ -1,6 +1,4 @@
 div.thank-you {
-  background-color: darken($primary-color, 10);
-  color: $white;
 
   @include breakpoint(small) {
     padding: rem-calc(15);
@@ -10,12 +8,14 @@ div.thank-you {
   }
 
   .thank-you-header {
-    color: $white;
+    color: darken($primary-color, 15);
     @include breakpoint(small) {
-      font-size: 1.4em;
+      font-size: 1.8em;
+      line-height: rem-calc(32);
     }
     @include breakpoint(medium) {
       font-size: 2em;
+      line-height: rem-calc(32);
     }
   }
 

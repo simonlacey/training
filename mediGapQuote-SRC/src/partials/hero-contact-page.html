@@ -1,0 +1,71 @@
+<!-- start hero -->
+<div class="hero-contact">
+    <div class="row">
+        <div class="overlay"></div>
+
+        <div class="contact-form-container">
+            <div class="small-12 medium-8 large-6 columns">
+
+                <form class="contact-form" id="contact-us" name="form1" role="form"
+                      action="./assets/php/contact-mail.php" method="post">
+                    <h3>Contact Us</h3>
+                    <p>Fill out the short form and click Send Message.</p>
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <label>Full Name:
+                                <input type="text" name="name" id="name" required
+                                       placeholder="What is your full name?">
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>Company Name:
+                                <input type="text" name="name" id="name" required
+                                       placeholder="What is your full name?">
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>Email Address:
+                                <input type="email" id="email" name="email" required
+                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                       placeholder="What is your email address?">
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>Phone Number:
+                                <input type="tel" id="phone" name="phone" required
+                                       pattern="(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}"
+                                       placeholder="What number can we reach you at?">
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label for="request">Message:
+                                <select id="request" name="request" required class="required">
+                                    <option value="">What are you looking for?</option>
+                                    <option value="partner">I want to partner with PremiumHealthQuotes.com in some way.</option>
+                                    <option value="mediaInquiry">I have a media inquiry for PremiumHealthQuotes.com.</option>
+                                    <option value="noContact">I want PremiumHealthQuotes.com to stop contacting me.</option>
+                                    <option value="shop">I want to shop for health insurance.</option>
+                                    <option value="question">I have a health insurance question.</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>Message:
+                                <textarea rows="3" id="message" name="message" required
+                                          placeholder="Let us know how we can help you?"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="small-12 medium-12 large-6 columns">
+                            <button class="button button-send-message" type="submit">Send Message <i class="fi-play"></i></button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end hero -->

@@ -5,5 +5,4 @@ domain: mediagapquote.org
 description: Affordable Medicare Insurance
 ---
 
-{{> form-medicare}}
-{{> hidden-frame}}
+{{> hero-contact-page}}

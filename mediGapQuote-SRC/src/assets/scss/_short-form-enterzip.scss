@@ -1,16 +1,27 @@
 #short-form-enter-zip {
   background: url('../img/short-form-bkgd.jpg') no-repeat center center;
   background-size: cover;
-  padding: rem-calc(30 0);
   width: 100%;
 
+  @include breakpoint(small) {
+    padding: rem-calc(20 20);
+  }
+  @include breakpoint(medium) {
+    padding: rem-calc(30 0);
+  }
+
   input#zip {
-    border-radius: 16px 0 0 16px;
-    height: 48px;
+    border-radius: $global-radius;
+    font-size: 1.15em;
+    width: 105%;
   }
 
   input#zip, input.find-plans {
     height: 48px;
+  }
+
+  input.find-plans {
+    padding: rem-calc(10 15);
   }
 
 }
@@ -20,18 +31,32 @@ h2#short-form-title {
   text-align: center;
   color: $white;
   @include breakpoint(small) {
-    font-size: 1.5em;
-    line-height: 1.1em;
+    font-size: 1.6em;
+    line-height: 1.3em;
   }
   @include breakpoint(medium) {
     font-size: 2.2em;
-    line-height: 1.3em;
+    line-height: 1.5em;
   }
 }
 
 .find-plans {
+  position: relative;
   background-color: $secondary-color;
+  top: 0;
+
+  @include breakpoint(small) {
+    font-size: 1em;
+    width: 110%;
+    left: -10px;
+  }
+  @include breakpoint(medium) {
+    font-size: 1.1em;
+    width: 130%;
+    left: -30px;
+  }
+
   &:hover {
-    background-color: $success-color;
+    background-color: darken($success-color, 15);
   }
 }

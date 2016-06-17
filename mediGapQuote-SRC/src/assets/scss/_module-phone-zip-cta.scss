@@ -5,48 +5,70 @@ module - phone + zip submit
 .phone-zip-module {
   text-align: center;
   padding: rem-calc(15);
-  margin: rem-calc(0 0 60 0);
   background-color: $white;
   border: 8px solid #d8e0e9;
-  max-width: 400px; /* set max width for desktop */
+  max-width: rem-calc(400);
+  margin: 0 auto;
 
-  h4 {
+  @include breakpoint(small) {
+    margin-bottom: rem-calc(30);
+  }
+  @include breakpoint(medium) {
+    margin-bottom: rem-calc(60);
+  }
+
+  h5 {
     color: darken($primary-color, 15);
+    @include breakpoint(small) {
+      font-size: 1.2em;
+    }
+    @include breakpoint(medium) {
+      font-size: 1.3em;
+    }
   }
 
   hr {
-    width: 50%;
+    width: 60%;
+    height: 1px;
+    border: none;
+    color: lightgray;
+    background-color: lightgray;
+    padding: rem-calc(0);
+    margin: 15 auto;
   }
 
   a {
     color: $secondary-color;
     font-weight: 600;
     line-height: 1em;
+
     &:hover {
       color: $primary-color;
     }
+
     @include breakpoint(small) {
       font-size: 1.7em;
     }
     @include breakpoint(medium) {
       font-size: 2em;
     }
+
   }
 
   button.compare-plans {
     font-weight: 600;
     background-color: $secondary-color;
     color: $white;
-    max-width: 75%;
     border-radius: 30px;
 
     @include breakpoint(small) {
       font-size: 1.1em;
-      padding: rem-calc(15 20);
+      padding: rem-calc(15 30);
+      max-width: 95%;
     }
     @include breakpoint(medium) {
       font-size: 1.3em;
-      padding: rem-calc(15 30);
+      max-width: 75%;
     }
 
     &:hover {

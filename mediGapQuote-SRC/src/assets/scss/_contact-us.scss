@@ -1,0 +1,114 @@
+/* --------------------------
+hero
+-------------------------- */
+
+.overlay-contact {
+  @include breakpoint(small) {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: darken($primary-color, 12);
+    opacity: 0.5;
+  }
+
+  @include breakpoint(medium) {
+    opacity: 0;
+  }
+
+}
+
+div.hero-contact {
+  position: relative;
+  z-index: 1;
+
+  @include breakpoint(small) {
+    background: url('../img/hero-sm-min.jpg') no-repeat center center;
+    height: auto;
+    padding: rem-calc(20 5);
+    background-size: cover;
+  }
+
+  @include breakpoint(medium) {
+    background: url('../img/hero-med-min.jpg') no-repeat center center;
+    background-size: cover;
+    padding: rem-calc(30 0 30 60);
+  }
+
+  @include breakpoint(large) {
+    background: url('../img/hero-lg-min.jpg') no-repeat center center;
+    background-size: cover;
+
+  }
+
+}
+
+
+/* --------------------------
+hero contact form
+-------------------------- */
+
+.contact-form-container {
+  position: relative;
+  z-index: 500;
+  /*margin-top: rem-calc(10);*/
+
+  form.contact-form {
+    border-radius: $global-radius;
+    border: 2px solid #d8e0e9;
+
+    @include breakpoint(small) {
+      background-color: $white;
+      padding: rem-calc(10 20);
+    }
+    @include breakpoint(medium) {
+      background-color: $white;
+      padding: rem-calc(20 40);
+    }
+
+    .contact-labels {
+      font-size: 1em;
+    }
+
+  }
+
+  h3 {
+    font-size: 1.85em;
+    line-height: 24px;
+    padding-top: rem-calc(15);
+  }
+
+  label {
+    font-size: .8em;
+    text-transform: uppercase;
+  }
+
+}
+
+.button-send-message {
+  background-color: $secondary-color;
+  margin-top: rem-calc(10);
+  border-radius: 30px;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 3px 10px rgba(255,102,66,0.2);
+
+  @include breakpoint(small) {
+    width: 100%;
+    font-size: 1.2em;
+  }
+
+  &:hover {
+    background-color: $primary-color;
+    box-shadow: 0 6px 18px rgba(0,100,95,0.6);
+  }
+  .fi-play {
+    font-size: 22px;
+    padding-left: 5px;
+  }
+}
+
+h1.hero-header-contact {
+  font-size: .5em;
+}
