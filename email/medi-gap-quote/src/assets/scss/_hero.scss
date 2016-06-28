@@ -1,0 +1,64 @@
+.hero {
+  background-image: url("http://www.medigapquote.org/email/v1/assets/img/hero.jpg");
+  max-width: 580px;
+  height: 300px;
+  margin-left: 15px;
+
+  @media only screen and (max-width: #{$global-breakpoint}) {
+    background-image: none;
+    background-color: $primary-color;
+    max-width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .hero-header {
+    font-size: 32px;
+    line-height: 32px;
+    color: $primary-color;
+
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      font-size: 30px;
+      color: #ffffff;
+    }
+
+  }
+
+  .hero-subheader {
+    font-size: 20px;
+    color: #444444;
+
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      color: #ffffff;
+    }
+
+  }
+
+  .hero-list {
+    font-size: 18px;
+    color: #555555;
+
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      color: #ffffff;
+    }
+
+  }
+
+  table.button.secondary table td {
+    padding: 5px 10px;
+    border: 0;
+    text-transform: uppercase;
+  }
+
+}
+
+.hero-header,
+.hero-subheader {
+  margin-left: 20px;
+
+  @media only screen and (max-width: #{$global-breakpoint}) {
+    margin-left: 0;
+    color: #ffffff;
+  }
+
+}
